@@ -4,7 +4,6 @@ public sealed class GetCatalogHomeQueryDto
 {
     public required List<GetCatalogHomeQueryDtoCategory> Categories { get; init; }
     public required List<GetCatalogHomeQueryDtoProduct> NewestProducts { get; init; }
-    public required List<GetCatalogHomeQueryDtoPromotion> Promotions { get; init; }
     public required GetCatalogHomeQueryDtoStats Stats { get; init; }
 }
 
@@ -25,15 +24,6 @@ public sealed class GetCatalogHomeQueryDtoProduct
 
     /// <summary>Relative image URL (e.g. <c>/uploads/products/{guid}.webp</c>) or null.</summary>
     public required string? ImageUrl { get; init; }
-}
-
-public sealed class GetCatalogHomeQueryDtoPromotion
-{
-    public required int Id { get; init; }
-    public required string Title { get; init; }
-    public required string ImageUrl { get; init; }
-    public required string? TargetUrl { get; init; }
-    public required int SortOrder { get; init; }
 }
 
 public sealed class GetCatalogHomeQueryDtoStats

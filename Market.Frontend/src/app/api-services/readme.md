@@ -55,9 +55,6 @@ api-services/
 ├── products/
 │   ├── products-api.models.ts
 │   └── products-api.service.ts
-├── promotions/
-│   ├── promotions-api.model.ts
-│   └── promotions-api.service.ts
 └── readme.md
 ```
 
@@ -66,12 +63,11 @@ Svaki folder predstavlja jedan backend kontroler:
 | Folder | Kontroler | Šta radi |
 |--------|-----------|----------|
 | `auth/` | `/api/auth` | prijava (`login`), obnova tokena (`refresh`), odjava (`logout`), registracija (`register`), zaboravljena i nova lozinka (`forgot-password`, `reset-password`), profil (`me`) i promjena lozinke (`change-password`) |
-| `catalog/` | `/Catalog` | javni (anonimni) podaci za početnu stranicu: kategorije, proizvodi i promocije |
+| `catalog/` | `/Catalog` | javni (anonimni) podaci za početnu stranicu: kategorije i proizvodi |
 | `currencies/` | `/Currencies` | valute i kursevi: lista valuta, konverzija iznosa te (Admin) lista, unos i brisanje kurseva i osvježavanje kurseva iz vanjskog izvora |
 | `orders/` | `/Orders` | narudžbe: lista, detalji, kreiranje, izmjena i promjena statusa (`order-status.helper.ts` je pomoćna klasa za statuse) |
 | `product-categories/` | `/ProductCategories` | kategorije proizvoda: CRUD te `enable` / `disable` |
 | `products/` | `/Products` | proizvodi: CRUD, provjera dostupnosti naziva te upload i brisanje slike |
-| `promotions/` | `/Promotions` | promocije (baneri na početnoj): CRUD |
 
 ---
 

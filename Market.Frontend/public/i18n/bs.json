@@ -114,8 +114,6 @@
     "STATS_CURRENCIES": "Cijene u više valuta",
     "LOADING": "Učitavanje ponude...",
     "ERROR": "Ponuda trenutno nije dostupna.",
-    "PROMOTIONS_TITLE": "Akcijske ponude",
-    "PROMOTION_MORE": "Saznaj više",
     "CATEGORIES_TITLE": "Kategorije",
     "NEWEST_TITLE": "Najnoviji proizvodi",
     "NEWEST_SUBTITLE": "Pogledajte šta je novo u ponudi",
@@ -232,7 +230,6 @@
       "SETTINGS": "Postavke",
       "MY_PROFILE": "Moj profil",
       "LOGOUT": "Odjava",
-      "PROMOTIONS": "Promocije",
       "EXCHANGE_RATES": "Kursna lista"
     }
   },
@@ -368,33 +365,6 @@
       "DELETED": "Slika je obrisana.",
       "DELETE_TITLE": "Brisanje slike",
       "DELETE_MESSAGE": "Da li ste sigurni da želite obrisati sliku proizvoda?"
-    }
-  },
-  "PROMOTIONS": {
-    "TITLE": "Promocije",
-    "SEARCH": "Pretraži po naslovu",
-    "FILTER_ACTIVE": "Status",
-    "ACTIVE": "Aktivne",
-    "INACTIVE": "Neaktivne",
-    "NEW": "Nova promocija",
-    "PERIOD": "Period",
-    "NO_DATA": "Nema promocija za prikaz",
-    "ADD_TITLE": "Nova promocija",
-    "EDIT_TITLE": "Uredi promociju",
-    "SAVED": "Promocija je sačuvana.",
-    "DELETED": "Promocija je obrisana.",
-    "FORM": {
-      "TITLE": "Naslov",
-      "IMAGE_URL": "URL slike",
-      "IMAGE_URL_HINT": "Apsolutna adresa slike (https://...)",
-      "TARGET_URL": "Odredište (opciono)",
-      "TARGET_URL_HINT": "Ruta aplikacije (/search?categoryId=1) ili https:// adresa",
-      "STARTS_AT": "Početak",
-      "ENDS_AT": "Kraj",
-      "DATE_OPTIONAL": "Prazno = bez ograničenja",
-      "SORT_ORDER": "Redoslijed",
-      "SORT_ORDER_HINT": "Manji broj se prikazuje prije",
-      "IS_ACTIVE": "Aktivna (prikazuje se na početnoj stranici)"
     }
   },
   "ORDERS": {
