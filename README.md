@@ -195,3 +195,9 @@ Uz svaki obrisani entitet uklonite i njegov `DbSet` u `IAppDbContext`/`DatabaseC
 - **Greške:** `ErrorDto.errors` vraća greške po polju i forme ih prikazuju; create vraća `201 { id }`, akcije bez rezultata `204`.
 - **Frontend:** Angular 21.2 (bez poznatih ranjivosti), produkcijski build prolazi, folder je `Market.Frontend` (ranije `rs1-frontend-2025-26`).
 - **Novo:** sve iz poglavlja „Šta starter sadrži” osim osnovnih kategorija, proizvoda i narudžbi, uključujući registraciju, zaboravljenu lozinku i profil (ranije prazne stranice).
+
+## Model baze podataka
+![ER dijagram](dokumenti/er-dijagram.png)
+Zalihe se vode po stavkama zaliha (StockItems), a artikli ih troše preko normativa (RecipeItems).
+Stanje zalihe se smanjuje pri naplati narudžbe, povećava pri prijemu robe, a inventura ga postavlja na izbrojano stanje.
+Cijene artikala se vode kroz historiju (ProductPrices), a PDV se određuje prema državi iz postavki aplikacije.
