@@ -1,7 +1,7 @@
 namespace Market.Application.Modules.Catalog.CatalogHome.Queries.GetCatalogHome;
 
 /// <summary>
-/// Data for the public home page: enabled categories, newest products, active promotions and counts.
+/// Data for the public home page: enabled categories, newest products and counts.
 /// Out-of-range limits are clamped (like paging), not rejected.
 /// </summary>
 public sealed class GetCatalogHomeQuery : IRequest<GetCatalogHomeQueryDto>

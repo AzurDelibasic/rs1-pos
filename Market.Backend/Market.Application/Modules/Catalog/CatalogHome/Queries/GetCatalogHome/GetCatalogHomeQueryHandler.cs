@@ -4,14 +4,13 @@ namespace Market.Application.Modules.Catalog.CatalogHome.Queries.GetCatalogHome;
 /// Reads the home page data directly from the database on every request.
 /// To cache it (e.g. in Redis), see the example in <see cref="Abstractions.Caching.ICacheService"/>.
 /// </summary>
-public sealed class GetCatalogHomeQueryHandler(IAppDbContext ctx, TimeProvider timeProvider)
+public sealed class GetCatalogHomeQueryHandler(IAppDbContext ctx)
     : IRequestHandler<GetCatalogHomeQuery, GetCatalogHomeQueryDto>
 {
     public async Task<GetCatalogHomeQueryDto> Handle(GetCatalogHomeQuery request, CancellationToken ct)
     {
         var categoryLimit = Math.Clamp(request.CategoryLimit, 1, GetCatalogHomeQuery.MaxCategoryLimit);
         var productLimit = Math.Clamp(request.ProductLimit, 1, GetCatalogHomeQuery.MaxProductLimit);
-        var nowUtc = timeProvider.GetUtcNow().UtcDateTime;
 
         var enabledCategories = ctx.ProductCategories
             .AsNoTracking()
@@ -49,29 +48,10 @@ public sealed class GetCatalogHomeQueryHandler(IAppDbContext ctx, TimeProvider t
             })
             .ToListAsync(ct);
 
-        // Active promotions inside their date window (null = no limit on that side).
-        var promotions = await ctx.Promotions
-            .AsNoTracking()
-            .Where(p => p.IsActive
-                && (p.StartsAtUtc == null || p.StartsAtUtc <= nowUtc)
-                && (p.EndsAtUtc == null || p.EndsAtUtc > nowUtc))
-            .OrderBy(p => p.SortOrder)
-            .ThenBy(p => p.Id)
-            .Select(p => new GetCatalogHomeQueryDtoPromotion
-            {
-                Id = p.Id,
-                Title = p.Title,
-                ImageUrl = p.ImageUrl,
-                TargetUrl = p.TargetUrl,
-                SortOrder = p.SortOrder
-            })
-            .ToListAsync(ct);
-
         return new GetCatalogHomeQueryDto
         {
             Categories = categories,
             NewestProducts = newestProducts,
-            Promotions = promotions,
             Stats = new GetCatalogHomeQueryDtoStats
             {
                 TotalCategories = await enabledCategories.CountAsync(ct),

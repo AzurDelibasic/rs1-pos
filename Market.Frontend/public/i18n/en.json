@@ -114,8 +114,6 @@
     "STATS_CURRENCIES": "Prices in several currencies",
     "LOADING": "Loading products...",
     "ERROR": "The catalog is currently unavailable.",
-    "PROMOTIONS_TITLE": "Special offers",
-    "PROMOTION_MORE": "Learn more",
     "CATEGORIES_TITLE": "Categories",
     "NEWEST_TITLE": "Newest products",
     "NEWEST_SUBTITLE": "See what is new in our store",
@@ -232,7 +230,6 @@
       "SETTINGS": "Settings",
       "MY_PROFILE": "My profile",
       "LOGOUT": "Logout",
-      "PROMOTIONS": "Promotions",
       "EXCHANGE_RATES": "Exchange rates"
     }
   },
@@ -368,33 +365,6 @@
       "DELETED": "The image was deleted.",
       "DELETE_TITLE": "Delete image",
       "DELETE_MESSAGE": "Are you sure you want to delete the product image?"
-    }
-  },
-  "PROMOTIONS": {
-    "TITLE": "Promotions",
-    "SEARCH": "Search by title",
-    "FILTER_ACTIVE": "Status",
-    "ACTIVE": "Active",
-    "INACTIVE": "Inactive",
-    "NEW": "New promotion",
-    "PERIOD": "Period",
-    "NO_DATA": "No promotions to display",
-    "ADD_TITLE": "New promotion",
-    "EDIT_TITLE": "Edit promotion",
-    "SAVED": "The promotion was saved.",
-    "DELETED": "The promotion was deleted.",
-    "FORM": {
-      "TITLE": "Title",
-      "IMAGE_URL": "Image URL",
-      "IMAGE_URL_HINT": "Absolute image address (https://...)",
-      "TARGET_URL": "Target (optional)",
-      "TARGET_URL_HINT": "App route (/search?categoryId=1) or an https:// address",
-      "STARTS_AT": "Start",
-      "ENDS_AT": "End",
-      "DATE_OPTIONAL": "Empty = no limit",
-      "SORT_ORDER": "Sort order",
-      "SORT_ORDER_HINT": "Lower numbers are shown first",
-      "IS_ACTIVE": "Active (shown on the home page)"
     }
   },
   "ORDERS": {

@@ -9,8 +9,6 @@ import { ProductCategoriesComponent } from './catalogs/product-categories/produc
 import {AdminOrdersComponent} from './orders/admin-orders.component';
 import {MyProfileComponent} from '../account/my-profile/my-profile.component';
 import {AdminSettingsComponent} from './admin-settings/admin-settings.component';
-import {PromotionsComponent} from './catalogs/promotions/promotions.component';
-import {PromotionUpsertComponent} from './catalogs/promotions/promotion-upsert/promotion-upsert.component';
 import {OrderEditComponent} from './orders/order-edit/order-edit.component';
 import {ExchangeRatesComponent} from './finance/exchange-rates/exchange-rates.component';
 import {unsavedChangesGuard} from '../shared/guards/unsaved-changes.guard';
@@ -38,20 +36,6 @@ const routes: Routes = [
       {
         path: 'product-categories',
         component: ProductCategoriesComponent,
-      },
-
-      // PROMOTIONS (baneri na početnoj stranici)
-      {
-        path: 'promotions',
-        component: PromotionsComponent,
-      },
-      {
-        path: 'promotions/add',
-        component: PromotionUpsertComponent,
-      },
-      {
-        path: 'promotions/:id/edit',
-        component: PromotionUpsertComponent,
       },
 
       // ORDERS

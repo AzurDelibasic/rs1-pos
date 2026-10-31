@@ -7,7 +7,7 @@ namespace Market.API.Controllers;
 public class CatalogController(ISender sender) : ControllerBase
 {
     /// <summary>
-    /// Public home page data: enabled categories, newest products, active promotions and counts.
+    /// Public home page data: enabled categories, newest products and counts.
     /// Example: <c>GET /Catalog/home?categoryLimit=8&amp;productLimit=12</c>.
     /// </summary>
     [HttpGet("home")]

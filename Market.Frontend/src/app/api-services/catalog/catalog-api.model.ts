@@ -18,8 +18,6 @@ export interface GetCatalogHomeQueryDto {
   categories: GetCatalogHomeQueryDtoCategory[];
   /** najnoviji omogućeni proizvodi u omogućenim kategorijama */
   newestProducts: GetCatalogHomeQueryDtoProduct[];
-  /** aktivne promocije unutar perioda važenja, po sortOrder */
-  promotions: GetCatalogHomeQueryDtoPromotion[];
   stats: GetCatalogHomeQueryDtoStats;
 }
 
@@ -38,16 +36,6 @@ export interface GetCatalogHomeQueryDtoProduct {
   categoryName: string;
   /** relativna putanja, npr. "/uploads/products/{guid}.webp" (prikaz: pipe apiUrl) ili null */
   imageUrl: string | null;
-}
-
-export interface GetCatalogHomeQueryDtoPromotion {
-  id: number;
-  title: string;
-  /** apsolutni http(s) URL slike */
-  imageUrl: string;
-  /** apsolutni http(s) URL ili ruta aplikacije ("/search?...") ili null */
-  targetUrl: string | null;
-  sortOrder: number;
 }
 
 export interface GetCatalogHomeQueryDtoStats {

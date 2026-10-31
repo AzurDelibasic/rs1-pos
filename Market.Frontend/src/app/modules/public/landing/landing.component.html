@@ -60,13 +60,6 @@
       </button>
     </section>
   } @else if (home) {
-    <!-- Promocije (baneri) -->
-    @if (home.promotions.length > 0) {
-      <section class="catalog-section">
-        <app-promotions-carousel [promotions]="home.promotions" />
-      </section>
-    }
-
     <!-- Kategorije → pretraga filtrirana po kategoriji -->
     @if (home.categories.length > 0) {
       <section class="catalog-section">

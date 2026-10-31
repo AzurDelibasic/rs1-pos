@@ -14,7 +14,7 @@ namespace Market.Application.Abstractions.Caching;
 ///
 /// var dto = await cache.GetOrCreateAsync(key, token => LoadHomeFromDatabaseAsync(token), TimeSpan.FromMinutes(5), ct);
 /// </code>
-/// Every handler that changes the catalog (products, categories, promotions) then calls
+/// Every handler that changes the catalog (products, categories) then calls
 /// <see cref="ICatalogCacheVersionService.BumpVersionAsync"/> after <c>SaveChangesAsync</c>,
 /// so the next request uses a new key and reads fresh data.
 /// </para>
