@@ -1,6 +1,7 @@
 ﻿using Market.Application.Abstractions;
 using Market.Domain.Entities.Finance;
 using Market.Domain.Entities.Sales;
+using Market.Domain.Entities.Venue;
 
 namespace Market.Infrastructure.Database;
 
@@ -17,6 +18,7 @@ public partial class DatabaseContext : DbContext, IAppDbContext
 
     public DbSet<CurrencyEntity> Currencies => Set<CurrencyEntity>();
     public DbSet<ExchangeRateEntity> ExchangeRates => Set<ExchangeRateEntity>();
+    public DbSet<RegionEntity> Regions => Set<RegionEntity>();
 
     private readonly TimeProvider _clock;
     public DatabaseContext(DbContextOptions<DatabaseContext> options, TimeProvider clock) : base(options)
