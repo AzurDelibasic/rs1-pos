@@ -1,5 +1,7 @@
-﻿using Market.Application.Modules.Venue.Regions.Commands.Create;
+using Market.Application.Modules.Venue.Regions.Commands.Create;
 using Market.Application.Modules.Venue.Regions.Commands.Delete;
+using Market.Application.Modules.Venue.Regions.Commands.Status.Activate;
+using Market.Application.Modules.Venue.Regions.Commands.Status.Deactivate;
 using Market.Application.Modules.Venue.Regions.Commands.Update;
 using Market.Application.Modules.Venue.Regions.Queries.GetById;
 using Market.Application.Modules.Venue.Regions.Queries.List;
@@ -45,5 +47,19 @@ public class RegionsController(ISender sender) : ControllerBase
     public async Task<PageResult<ListRegionsQueryDto>> List([FromQuery] ListRegionsQuery query, CancellationToken ct)
     {
         return await sender.Send(query, ct);
+    }
+
+    [HttpPut("{id:int}/activate")]
+    [Authorize(Policy = PolicyNames.Admin)]
+    public async Task Activate(int id, CancellationToken ct)
+    {
+        await sender.Send(new ActivateRegionCommand { Id = id }, ct);
+    }
+
+    [HttpPut("{id:int}/deactivate")]
+    [Authorize(Policy = PolicyNames.Admin)]
+    public async Task Deactivate(int id, CancellationToken ct)
+    {
+        await sender.Send(new DeactivateRegionCommand { Id = id }, ct);
     }
 }

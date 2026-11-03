@@ -1,0 +1,71 @@
+<h2 mat-dialog-title>
+  {{ (isEditMode ? 'REGIONS.FORM.EDIT_TITLE' : 'REGIONS.FORM.CREATE_TITLE') | translate }}
+</h2>
+
+<mat-dialog-content>
+  @if (form) {
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" id="region-form">
+      @if (errorMessage) {
+        <div class="error-banner">
+          <mat-icon>error</mat-icon>
+          <span>{{ errorMessage }}</span>
+        </div>
+      }
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>{{ 'REGIONS.FORM.NAME' | translate }}</mat-label>
+        <input
+          matInput
+          formControlName="name"
+          [placeholder]="'REGIONS.FORM.NAME_PLACEHOLDER' | translate"
+          [maxlength]="formService.nameMaxLength"
+          autocomplete="off"
+        />
+        <mat-icon matSuffix>label</mat-icon>
+        <mat-error><app-fit-field-error [control]="form.controls.name" /></mat-error>
+        <mat-hint align="end">{{ form.controls.name.value.length }}/{{ formService.nameMaxLength }}</mat-hint>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>{{ 'REGIONS.FORM.SORT_ORDER' | translate }}</mat-label>
+        <input matInput type="number" min="0" formControlName="sortOrder" />
+        <mat-icon matSuffix>sort</mat-icon>
+        <mat-error><app-fit-field-error [control]="form.controls.sortOrder" /></mat-error>
+        <mat-hint>{{ 'REGIONS.FORM.SORT_ORDER_HINT' | translate }}</mat-hint>
+      </mat-form-field>
+
+      <mat-checkbox formControlName="isActive" class="enabled-checkbox">
+        {{ 'REGIONS.FORM.IS_ACTIVE' | translate }}
+      </mat-checkbox>
+    </form>
+  }
+
+  @if (isLoading && !form) {
+    <div class="loading-container">
+      <mat-spinner diameter="40"></mat-spinner>
+      <p>{{ 'REGIONS.FORM.LOADING' | translate }}</p>
+    </div>
+  }
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button type="button" (click)="onCancel()" [disabled]="isLoading">
+    <mat-icon>close</mat-icon>
+    {{ 'REGIONS.FORM.CANCEL' | translate }}
+  </button>
+
+  <button
+    mat-raised-button
+    color="primary"
+    type="submit"
+    form="region-form"
+    [disabled]="!form || form.invalid || isLoading"
+  >
+    @if (isLoading) {
+      <mat-spinner diameter="20"></mat-spinner>
+    } @else {
+      <mat-icon>{{ isEditMode ? 'edit' : 'save' }}</mat-icon>
+    }
+    {{ (isEditMode ? 'REGIONS.FORM.UPDATE' : 'REGIONS.FORM.SAVE') | translate }}
+  </button>
+</mat-dialog-actions>

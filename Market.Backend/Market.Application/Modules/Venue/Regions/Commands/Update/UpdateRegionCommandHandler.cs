@@ -9,7 +9,7 @@ public sealed class UpdateRegionCommandHandler(IAppDbContext context)
             .FirstOrDefaultAsync(x => x.Id == request.Id, cancellationToken);
 
         if (region is null)
-            throw new MarketNotFoundException("Regija nije pronađena.");
+            throw new MarketNotFoundException($"Regija (ID={request.Id}) nije pronađena.");
 
         var name = request.Name.Trim();
 

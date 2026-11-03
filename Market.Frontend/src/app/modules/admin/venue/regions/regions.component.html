@@ -1,0 +1,158 @@
+<div class="container">
+  <div class="header-card">
+    <div class="header-card-content">
+      <div class="title-section">
+        <div class="title-icon">
+          <mat-icon>table_restaurant</mat-icon>
+        </div>
+        <h1>{{ 'REGIONS.TITLE' | translate }}</h1>
+      </div>
+
+      <div class="actions-container">
+        <mat-slide-toggle
+          [(ngModel)]="showOnlyActive"
+          (change)="onToggleActiveFilter($event.checked)"
+          color="primary"
+          class="enabled-toggle"
+        >
+          {{ 'REGIONS.ONLY_ACTIVE' | translate }}
+        </mat-slide-toggle>
+
+        <mat-form-field class="search-field" appearance="fill">
+          <mat-label>{{ 'REGIONS.SEARCH_PLACEHOLDER' | translate }}</mat-label>
+          <input
+            matInput
+            [(ngModel)]="request.search"
+            (keyup.enter)="onSearchChange(request.search || '')"
+            [placeholder]="'REGIONS.SEARCH_INPUT_PLACEHOLDER' | translate"
+          />
+          <mat-icon matSuffix>search</mat-icon>
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" (click)="onCreate()" class="add-button">
+          <mat-icon>add</mat-icon>
+          <span>{{ 'REGIONS.NEW_REGION' | translate }}</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="isLoading" class="loading-container">
+    <mat-spinner diameter="48" color="primary"></mat-spinner>
+    <p>{{ 'REGIONS.LOADING' | translate }}</p>
+  </div>
+
+  <div *ngIf="!isLoading && errorMessage" class="error-container">
+    <mat-icon>error_outline</mat-icon>
+    <p>{{ errorMessage }}</p>
+  </div>
+
+  <div class="table-card" *ngIf="!isLoading && !errorMessage">
+    <table mat-table [dataSource]="items">
+      <ng-container matColumnDef="sortOrder">
+        <th mat-header-cell *matHeaderCellDef>
+          <div class="header-cell">
+            <mat-icon class="header-icon">sort</mat-icon>
+            {{ 'REGIONS.TABLE.SORT_ORDER' | translate }}
+          </div>
+        </th>
+        <td mat-cell *matCellDef="let region">
+          {{ region.sortOrder }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>
+          <div class="header-cell">
+            <mat-icon class="header-icon">label</mat-icon>
+            {{ 'REGIONS.TABLE.NAME' | translate }}
+          </div>
+        </th>
+        <td mat-cell *matCellDef="let region">
+          <span class="category-name">{{ region.name }}</span>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="isActive">
+        <th mat-header-cell *matHeaderCellDef>
+          <div class="header-cell">
+            <mat-icon class="header-icon">toggle_on</mat-icon>
+            {{ 'REGIONS.TABLE.STATUS' | translate }}
+          </div>
+        </th>
+        <td mat-cell *matCellDef="let region">
+          <mat-slide-toggle
+            [checked]="region.isActive"
+            (change)="onToggleStatus(region)"
+            color="primary"
+            [disabled]="isLoading"
+            class="status-toggle"
+          >
+            <span class="status-label" [class.enabled]="region.isActive">
+              {{
+                region.isActive
+                  ? ('REGIONS.TABLE.ACTIVE' | translate)
+                  : ('REGIONS.TABLE.INACTIVE' | translate)
+              }}
+            </span>
+          </mat-slide-toggle>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef>
+          <div class="header-cell">
+            <mat-icon class="header-icon">settings</mat-icon>
+            {{ 'REGIONS.TABLE.ACTIONS' | translate }}
+          </div>
+        </th>
+        <td mat-cell *matCellDef="let region">
+          <div class="action-buttons">
+            <button
+              mat-icon-button
+              color="primary"
+              (click)="onEdit(region)"
+              [matTooltip]="'REGIONS.ACTIONS.EDIT_TOOLTIP' | translate"
+              class="action-btn edit-btn"
+            >
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button
+              mat-icon-button
+              color="warn"
+              (click)="onDelete(region)"
+              [matTooltip]="'REGIONS.ACTIONS.DELETE_TOOLTIP' | translate"
+              class="action-btn delete-btn"
+            >
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+
+      <tr mat-row *matRowDef="let row; columns: displayedColumns" class="data-row"></tr>
+
+      <tr class="mat-row no-data-row" *matNoDataRow>
+        <td class="mat-cell" [attr.colspan]="displayedColumns.length">
+          <div class="no-data-content">
+            <mat-icon>inbox</mat-icon>
+            <p>
+              <ng-container *ngIf="request.search; else noDataDefault">
+                {{ 'REGIONS.NO_DATA_FILTER' | translate }}
+              </ng-container>
+              <ng-template #noDataDefault>
+                {{ 'REGIONS.NO_DATA' | translate }}
+              </ng-template>
+            </p>
+          </div>
+        </td>
+      </tr>
+    </table>
+
+    <div class="paginator-wrapper">
+      <app-fit-paginator-bar [vm]="this"></app-fit-paginator-bar>
+    </div>
+  </div>
+</div>

@@ -230,7 +230,9 @@
       "SETTINGS": "Settings",
       "MY_PROFILE": "My profile",
       "LOGOUT": "Logout",
-      "EXCHANGE_RATES": "Exchange rates"
+      "EXCHANGE_RATES": "Exchange rates",
+      "VENUE": "VENUE",
+      "REGIONS": "Regions"
     }
   },
   "ADMIN_SETTINGS": {
@@ -286,6 +288,53 @@
       "ERROR_TOGGLE": "Error changing status of category \"{{name}}\".",
       "ERROR_LOAD": "Error loading the category.",
       "ERROR_LOAD_LIST": "Error loading categories."
+    }
+  },
+  "REGIONS": {
+    "TITLE": "Regions",
+    "SEARCH_PLACEHOLDER": "Search regions",
+    "SEARCH_INPUT_PLACEHOLDER": "Enter region name...",
+    "ONLY_ACTIVE": "Only active",
+    "NEW_REGION": "New region",
+    "LOADING": "Loading regions...",
+    "NO_DATA": "No regions to display",
+    "NO_DATA_FILTER": "No results found for search",
+    "TABLE": {
+      "SORT_ORDER": "Order",
+      "NAME": "Name",
+      "STATUS": "Status",
+      "ACTIVE": "Active",
+      "INACTIVE": "Inactive",
+      "ACTIONS": "Actions"
+    },
+    "ACTIONS": {
+      "EDIT_TOOLTIP": "Edit region",
+      "DELETE_TOOLTIP": "Delete region"
+    },
+    "FORM": {
+      "NAME": "Region name",
+      "NAME_PLACEHOLDER": "e.g. Main hall, Terrace, Bar",
+      "SORT_ORDER": "Display order",
+      "SORT_ORDER_HINT": "Lower numbers are shown first",
+      "IS_ACTIVE": "Active",
+      "LOADING": "Loading...",
+      "CANCEL": "Cancel",
+      "SAVE": "Save",
+      "UPDATE": "Update",
+      "CREATE_TITLE": "New region",
+      "EDIT_TITLE": "Edit region"
+    },
+    "DIALOGS": {
+      "DELETE_MESSAGE": "Are you sure you want to delete region \"{{name}}\"?",
+      "SUCCESS_CREATE": "Region created successfully.",
+      "SUCCESS_UPDATE": "Region updated successfully.",
+      "SUCCESS_DELETE": "Region deleted successfully.",
+      "SUCCESS_ACTIVATE": "Region \"{{name}}\" has been activated.",
+      "SUCCESS_DEACTIVATE": "Region \"{{name}}\" has been deactivated.",
+      "ERROR_DELETE": "Error deleting region.",
+      "ERROR_TOGGLE": "Error changing status of region \"{{name}}\".",
+      "ERROR_LOAD": "Error loading the region.",
+      "ERROR_LOAD_LIST": "Error loading regions."
     }
   },
   "PRODUCTS": {

@@ -230,6 +230,36 @@ export class DialogHelperService {
     }
   };
 
+  region = {
+    confirmDelete: (regionName: string) => {
+      return this.confirmDelete(
+        regionName,
+        'REGIONS.DIALOGS.DELETE_MESSAGE'
+      );
+    },
+
+    showCreateSuccess: () => {
+      return this.showSuccess(
+        'DIALOGS.TITLES.SUCCESS',
+        'REGIONS.DIALOGS.SUCCESS_CREATE'
+      );
+    },
+
+    showUpdateSuccess: () => {
+      return this.showSuccess(
+        'DIALOGS.TITLES.SUCCESS',
+        'REGIONS.DIALOGS.SUCCESS_UPDATE'
+      );
+    },
+
+    showDeleteSuccess: () => {
+      return this.showSuccess(
+        'DIALOGS.TITLES.SUCCESS',
+        'REGIONS.DIALOGS.SUCCESS_DELETE'
+      );
+    }
+  };
+
   /**
    * Product specific dialogs
    */
