@@ -230,7 +230,9 @@
       "SETTINGS": "Postavke",
       "MY_PROFILE": "Moj profil",
       "LOGOUT": "Odjava",
-      "EXCHANGE_RATES": "Kursna lista"
+      "EXCHANGE_RATES": "Kursna lista",
+      "VENUE": "OBJEKAT",
+      "REGIONS": "Regije"
     }
   },
   "ADMIN_SETTINGS": {
@@ -286,6 +288,53 @@
       "ERROR_TOGGLE": "Greška pri promjeni statusa kategorije \"{{name}}\".",
       "ERROR_LOAD": "Greška pri učitavanju kategorije.",
       "ERROR_LOAD_LIST": "Greška pri učitavanju kategorija."
+    }
+  },
+  "REGIONS": {
+    "TITLE": "Regije",
+    "SEARCH_PLACEHOLDER": "Pretraži regije",
+    "SEARCH_INPUT_PLACEHOLDER": "Unesite naziv regije...",
+    "ONLY_ACTIVE": "Samo aktivne",
+    "NEW_REGION": "Nova regija",
+    "LOADING": "Učitavanje regija...",
+    "NO_DATA": "Nema regija za prikaz",
+    "NO_DATA_FILTER": "Nema rezultata za pretragu",
+    "TABLE": {
+      "SORT_ORDER": "Redoslijed",
+      "NAME": "Naziv",
+      "STATUS": "Status",
+      "ACTIVE": "Aktivna",
+      "INACTIVE": "Neaktivna",
+      "ACTIONS": "Akcije"
+    },
+    "ACTIONS": {
+      "EDIT_TOOLTIP": "Uredi regiju",
+      "DELETE_TOOLTIP": "Obriši regiju"
+    },
+    "FORM": {
+      "NAME": "Naziv regije",
+      "NAME_PLACEHOLDER": "npr. Sala, Terasa, Šank",
+      "SORT_ORDER": "Redoslijed prikaza",
+      "SORT_ORDER_HINT": "Manji broj se prikazuje prvi",
+      "IS_ACTIVE": "Aktivna",
+      "LOADING": "Učitavanje...",
+      "CANCEL": "Otkaži",
+      "SAVE": "Sačuvaj",
+      "UPDATE": "Ažuriraj",
+      "CREATE_TITLE": "Nova regija",
+      "EDIT_TITLE": "Uredi regiju"
+    },
+    "DIALOGS": {
+      "DELETE_MESSAGE": "Da li ste sigurni da želite obrisati regiju \"{{name}}\"?",
+      "SUCCESS_CREATE": "Regija uspješno kreirana.",
+      "SUCCESS_UPDATE": "Regija uspješno ažurirana.",
+      "SUCCESS_DELETE": "Regija uspješno obrisana.",
+      "SUCCESS_ACTIVATE": "Regija \"{{name}}\" je aktivirana.",
+      "SUCCESS_DEACTIVATE": "Regija \"{{name}}\" je deaktivirana.",
+      "ERROR_DELETE": "Greška pri brisanju regije.",
+      "ERROR_TOGGLE": "Greška pri promjeni statusa regije \"{{name}}\".",
+      "ERROR_LOAD": "Greška pri učitavanju regije.",
+      "ERROR_LOAD_LIST": "Greška pri učitavanju regija."
     }
   },
   "PRODUCTS": {

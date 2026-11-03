@@ -4,6 +4,7 @@ using Market.Domain.Entities.Catalog;
 using Market.Domain.Entities.Finance;
 using Market.Domain.Entities.Sales;
 using Market.Domain.Entities.Identity;
+using Market.Domain.Entities.Venue;
 
 namespace Market.Infrastructure.Database.Seeders;
 
@@ -34,6 +35,7 @@ public static class DynamicDataSeeder
         await SeedProductsAsync(context);
         await SeedOrdersAsync(context);
         await SeedExchangeRatesAsync(context);
+        await SeedRegionsAsync(context);
     }
 
     private static async Task SeedProductCategoriesAsync(DatabaseContext context)
@@ -723,5 +725,21 @@ public static class DynamicDataSeeder
             Order = null, // EF sets the relationship when the item is added to OrderEntity.Items
             CreatedAtUtc = DateTime.UtcNow
         };
+    }
+
+    private static async Task SeedRegionsAsync(DatabaseContext context)
+    {
+        if (await context.Regions.AnyAsync())
+            return;
+
+        context.Regions.AddRange(
+            new RegionEntity { Name = "Sala", SortOrder = 1, IsActive = true },
+            new RegionEntity { Name = "Šank", SortOrder = 2, IsActive = true },
+            new RegionEntity { Name = "Terasa", SortOrder = 3, IsActive = true },
+            new RegionEntity { Name = "Bašta", SortOrder = 4, IsActive = false });
+
+        await context.SaveChangesAsync();
+
+        Console.WriteLine("Dynamic seed: regions added.");
     }
 }

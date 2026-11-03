@@ -19,6 +19,8 @@ import { OrderEditComponent } from './orders/order-edit/order-edit.component';
 import { ProductAutocompleteComponent } from './orders/order-edit/product-autocomplete/product-autocomplete.component';
 import { ExchangeRatesComponent } from './finance/exchange-rates/exchange-rates.component';
 import { AdminSettingsComponent } from './admin-settings/admin-settings.component';
+import { RegionUpsertComponent } from './venue/regions/region-upsert/region-upsert.component';
+import { RegionsComponent } from './venue/regions/regions.component';
 
 
 @NgModule({
@@ -37,6 +39,8 @@ import { AdminSettingsComponent } from './admin-settings/admin-settings.componen
     ProductAutocompleteComponent,
     ExchangeRatesComponent,
     AdminSettingsComponent,
+    RegionUpsertComponent,
+    RegionsComponent,
   ],
   imports: [
     AdminRoutingModule,

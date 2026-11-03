@@ -72,6 +72,17 @@
 
       <mat-divider></mat-divider>
 
+      <div class="nav-section-title">
+        {{ 'ADMIN_PANEL.MENU.VENUE' | translate }}
+      </div>
+
+      <a mat-list-item routerLink="/admin/regions" routerLinkActive="active">
+        <mat-icon matListItemIcon>table_restaurant</mat-icon>
+        <span matListItemTitle>{{ 'ADMIN_PANEL.MENU.REGIONS' | translate }}</span>
+      </a>
+
+      <mat-divider></mat-divider>
+
       <!-- ORDERS SECTION -->
       <div class="nav-section-title">
         {{ 'ADMIN_PANEL.MENU.ORDERS_SECTION' | translate }}

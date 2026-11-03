@@ -12,6 +12,7 @@ import {AdminSettingsComponent} from './admin-settings/admin-settings.component'
 import {OrderEditComponent} from './orders/order-edit/order-edit.component';
 import {ExchangeRatesComponent} from './finance/exchange-rates/exchange-rates.component';
 import {unsavedChangesGuard} from '../shared/guards/unsaved-changes.guard';
+import {RegionsComponent} from './venue/regions/regions.component';
 
 const routes: Routes = [
   {
@@ -36,6 +37,11 @@ const routes: Routes = [
       {
         path: 'product-categories',
         component: ProductCategoriesComponent,
+      },
+
+      {
+        path: 'regions',
+        component: RegionsComponent,
       },
 
       // ORDERS
