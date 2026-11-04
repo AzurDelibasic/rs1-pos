@@ -13,6 +13,7 @@ import {OrderEditComponent} from './orders/order-edit/order-edit.component';
 import {ExchangeRatesComponent} from './finance/exchange-rates/exchange-rates.component';
 import {unsavedChangesGuard} from '../shared/guards/unsaved-changes.guard';
 import {RegionsComponent} from './venue/regions/regions.component';
+import {TablesComponent} from './venue/tables/tables.component';
 
 const routes: Routes = [
   {
@@ -42,6 +43,10 @@ const routes: Routes = [
       {
         path: 'regions',
         component: RegionsComponent,
+      },
+      {
+        path: 'tables',
+        component: TablesComponent,
       },
 
       // ORDERS

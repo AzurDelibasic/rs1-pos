@@ -20,6 +20,7 @@ public interface IAppDbContext
     DbSet<ExchangeRateEntity> ExchangeRates { get; }
 
     DbSet<RegionEntity> Regions { get; }
+    DbSet<TableEntity> Tables { get; }
 
     Task<int> SaveChangesAsync(CancellationToken ct);
 }

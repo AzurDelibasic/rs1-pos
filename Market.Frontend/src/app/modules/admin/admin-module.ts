@@ -21,6 +21,8 @@ import { ExchangeRatesComponent } from './finance/exchange-rates/exchange-rates.
 import { AdminSettingsComponent } from './admin-settings/admin-settings.component';
 import { RegionUpsertComponent } from './venue/regions/region-upsert/region-upsert.component';
 import { RegionsComponent } from './venue/regions/regions.component';
+import { TableUpsertComponent } from './venue/tables/table-upsert/table-upsert.component';
+import { TablesComponent } from './venue/tables/tables.component';
 
 
 @NgModule({
@@ -41,6 +43,8 @@ import { RegionsComponent } from './venue/regions/regions.component';
     AdminSettingsComponent,
     RegionUpsertComponent,
     RegionsComponent,
+    TableUpsertComponent,
+    TablesComponent,
   ],
   imports: [
     AdminRoutingModule,

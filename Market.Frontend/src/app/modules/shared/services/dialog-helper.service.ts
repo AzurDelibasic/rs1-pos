@@ -260,6 +260,36 @@ export class DialogHelperService {
     }
   };
 
+  table = {
+    confirmDelete: (tableLabel: string) => {
+      return this.confirmDelete(
+        tableLabel,
+        'TABLES.DIALOGS.DELETE_MESSAGE'
+      );
+    },
+
+    showCreateSuccess: () => {
+      return this.showSuccess(
+        'DIALOGS.TITLES.SUCCESS',
+        'TABLES.DIALOGS.SUCCESS_CREATE'
+      );
+    },
+
+    showUpdateSuccess: () => {
+      return this.showSuccess(
+        'DIALOGS.TITLES.SUCCESS',
+        'TABLES.DIALOGS.SUCCESS_UPDATE'
+      );
+    },
+
+    showDeleteSuccess: () => {
+      return this.showSuccess(
+        'DIALOGS.TITLES.SUCCESS',
+        'TABLES.DIALOGS.SUCCESS_DELETE'
+      );
+    }
+  };
+
   /**
    * Product specific dialogs
    */

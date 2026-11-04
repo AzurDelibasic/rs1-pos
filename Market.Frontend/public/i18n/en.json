@@ -232,7 +232,8 @@
       "LOGOUT": "Logout",
       "EXCHANGE_RATES": "Exchange rates",
       "VENUE": "VENUE",
-      "REGIONS": "Regions"
+      "REGIONS": "Regions",
+      "TABLES": "Tables"
     }
   },
   "ADMIN_SETTINGS": {
@@ -335,6 +336,57 @@
       "ERROR_TOGGLE": "Error changing status of region \"{{name}}\".",
       "ERROR_LOAD": "Error loading the region.",
       "ERROR_LOAD_LIST": "Error loading regions."
+    }
+  },
+  "TABLES": {
+    "TITLE": "Tables",
+    "SEARCH_PLACEHOLDER": "Search tables",
+    "SEARCH_INPUT_PLACEHOLDER": "Enter table label...",
+    "REGION_FILTER": "Region",
+    "ALL_REGIONS": "All regions",
+    "ONLY_ACTIVE": "Only active",
+    "NEW_TABLE": "New table",
+    "LOADING": "Loading tables...",
+    "NO_DATA": "No tables to display",
+    "NO_DATA_FILTER": "No results for the selected filters",
+    "TABLE": {
+      "REGION": "Region",
+      "LABEL": "Label",
+      "SEATS": "Seats",
+      "STATUS": "Status",
+      "ACTIVE": "Active",
+      "INACTIVE": "Inactive",
+      "ACTIONS": "Actions"
+    },
+    "ACTIONS": {
+      "EDIT_TOOLTIP": "Edit table",
+      "DELETE_TOOLTIP": "Delete table"
+    },
+    "FORM": {
+      "REGION": "Region",
+      "LABEL": "Table label",
+      "LABEL_PLACEHOLDER": "e.g. S1, T3, B2",
+      "SEATS": "Seats",
+      "IS_ACTIVE": "Active",
+      "LOADING": "Loading...",
+      "CANCEL": "Cancel",
+      "SAVE": "Save",
+      "UPDATE": "Update",
+      "CREATE_TITLE": "New table",
+      "EDIT_TITLE": "Edit table"
+    },
+    "DIALOGS": {
+      "DELETE_MESSAGE": "Are you sure you want to delete table \"{{name}}\"?",
+      "SUCCESS_CREATE": "Table created successfully.",
+      "SUCCESS_UPDATE": "Table updated successfully.",
+      "SUCCESS_DELETE": "Table deleted successfully.",
+      "SUCCESS_ACTIVATE": "Table \"{{name}}\" has been activated.",
+      "SUCCESS_DEACTIVATE": "Table \"{{name}}\" has been deactivated.",
+      "ERROR_DELETE": "Error deleting table.",
+      "ERROR_TOGGLE": "Error changing status of table \"{{name}}\".",
+      "ERROR_LOAD": "Error loading the table.",
+      "ERROR_LOAD_LIST": "Error loading tables.",
+      "ERROR_LOAD_REGIONS": "Error loading regions."
     }
   },
   "PRODUCTS": {

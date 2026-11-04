@@ -10,6 +10,8 @@ namespace Market.Domain.Entities.Venue
 
         public bool IsActive { get; set; } = true;
 
+        public IReadOnlyCollection<TableEntity> Tables { get; private set; } = new List<TableEntity>();
+
         public static class Constraints
         {
             public const int NameMaxLength = 50;
