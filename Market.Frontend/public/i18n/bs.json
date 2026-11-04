@@ -218,7 +218,7 @@
     "ROLES": {
       "ADMIN": "Administrator",
       "MANAGER": "Menadžer",
-      "EMPLOYEE": "Zaposlenik"
+      "EMPLOYEE": "Konobar"
     },
     "MENU": {
       "CATALOG": "KATALOG",
@@ -233,7 +233,8 @@
       "EXCHANGE_RATES": "Kursna lista",
       "VENUE": "OBJEKAT",
       "REGIONS": "Regije",
-      "TABLES": "Stolovi"
+      "TABLES": "Stolovi",
+      "POS": "Kasa (POS)"
     }
   },
   "ADMIN_SETTINGS": {
@@ -387,6 +388,28 @@
       "ERROR_LOAD": "Greška pri učitavanju stola.",
       "ERROR_LOAD_LIST": "Greška pri učitavanju stolova.",
       "ERROR_LOAD_REGIONS": "Greška pri učitavanju regija."
+    }
+  },
+  "POS": {
+    "MENU": {
+      "SECTION": "KASA",
+      "FLOOR_PLAN": "Raspored stolova",
+      "ADMIN_PANEL": "Admin panel",
+      "MY_PROFILE": "Moj profil",
+      "LOGOUT": "Odjava"
+    },
+    "FLOOR_PLAN": {
+      "TITLE": "Raspored stolova",
+      "REFRESH": "Osvježi",
+      "LOADING": "Učitavanje rasporeda...",
+      "ERROR_LOAD": "Greška pri učitavanju rasporeda stolova.",
+      "NO_DATA": "Nema aktivnih regija za prikaz.",
+      "NO_TABLES": "U ovoj regiji nema aktivnih stolova.",
+      "STATUS": {
+        "FREE": "Slobodan",
+        "OCCUPIED": "Zauzet",
+        "RESERVED": "Rezervisan"
+      }
     }
   },
   "PRODUCTS": {

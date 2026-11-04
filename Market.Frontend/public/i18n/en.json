@@ -218,7 +218,7 @@
     "ROLES": {
       "ADMIN": "Administrator",
       "MANAGER": "Manager",
-      "EMPLOYEE": "Employee"
+      "EMPLOYEE": "Waiter"
     },
     "MENU": {
       "CATALOG": "CATALOG",
@@ -233,7 +233,8 @@
       "EXCHANGE_RATES": "Exchange rates",
       "VENUE": "VENUE",
       "REGIONS": "Regions",
-      "TABLES": "Tables"
+      "TABLES": "Tables",
+      "POS": "POS"
     }
   },
   "ADMIN_SETTINGS": {
@@ -387,6 +388,28 @@
       "ERROR_LOAD": "Error loading the table.",
       "ERROR_LOAD_LIST": "Error loading tables.",
       "ERROR_LOAD_REGIONS": "Error loading regions."
+    }
+  },
+  "POS": {
+    "MENU": {
+      "SECTION": "POS",
+      "FLOOR_PLAN": "Floor plan",
+      "ADMIN_PANEL": "Admin panel",
+      "MY_PROFILE": "My profile",
+      "LOGOUT": "Logout"
+    },
+    "FLOOR_PLAN": {
+      "TITLE": "Floor plan",
+      "REFRESH": "Refresh",
+      "LOADING": "Loading floor plan...",
+      "ERROR_LOAD": "Error loading the floor plan.",
+      "NO_DATA": "No active regions to display.",
+      "NO_TABLES": "There are no active tables in this region.",
+      "STATUS": {
+        "FREE": "Free",
+        "OCCUPIED": "Occupied",
+        "RESERVED": "Reserved"
+      }
     }
   },
   "PRODUCTS": {

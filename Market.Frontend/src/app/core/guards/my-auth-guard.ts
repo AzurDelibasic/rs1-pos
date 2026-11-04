@@ -37,9 +37,10 @@ export const myAuthGuard: CanActivateFn = (
   const requireAdmin = authData.requireAdmin === true;
   const requireManager = authData.requireManager === true;
   const requireEmployee = authData.requireEmployee === true;
+  const requireStaff = authData.requireStaff === true;
   // traženje bilo koje uloge podrazumijeva i prijavu
   const requireAuth =
-    authData.requireAuth === true || requireAdmin || requireManager || requireEmployee;
+    authData.requireAuth === true || requireAdmin || requireManager || requireEmployee || requireStaff;
 
   // Ako ne traži auth → pusti (javne rute)
   if (!requireAuth) {
@@ -56,7 +57,8 @@ export const myAuthGuard: CanActivateFn = (
   if (
     (requireAdmin && !user.isAdmin) ||
     (requireManager && !user.isManager) ||
-    (requireEmployee && !user.isEmployee)
+    (requireEmployee && !user.isEmployee) ||
+    (requireStaff && !(user.isAdmin || user.isManager || user.isEmployee))
   ) {
     return router.createUrlTree([currentUser.getDefaultRoute()]);
   }
@@ -69,6 +71,7 @@ export interface MyAuthRouteData {
   requireAdmin?: boolean;
   requireManager?: boolean;
   requireEmployee?: boolean;
+  requireStaff?: boolean;
 }
 
 export function myAuthData(data: MyAuthRouteData): { auth: MyAuthRouteData } {

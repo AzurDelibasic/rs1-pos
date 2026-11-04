@@ -11,6 +11,13 @@ const routes: Routes = [
       import('./modules/admin/admin-module').then(m => m.AdminModule)
   },
   {
+    path: 'pos',
+    canActivate: [myAuthGuard],
+    data: myAuthData({ requireStaff: true }),
+    loadChildren: () =>
+      import('./modules/pos/pos-module').then(m => m.PosModule)
+  },
+  {
     path: 'auth',
     loadChildren: () =>
       import('./modules/auth/auth-module').then(m => m.AuthModule)

@@ -11,7 +11,7 @@ namespace Market.API.Controllers;
 
 [ApiController]
 [Route("[controller]")]
-[Authorize]
+[Authorize(Policy = PolicyNames.Staff)]
 public class RegionsController(ISender sender) : ControllerBase
 {
     [HttpPost]
