@@ -42,9 +42,7 @@ public class ProductsController(ISender sender) : ControllerBase
     }
 
     // Public catalog: anonymous visitors can browse products (public "search products" page).
-    // Disabled products (and products in disabled categories) are visible only to the administrator.
     [HttpGet("{id:int}")]
-    [AllowAnonymous]
     public async Task<GetProductByIdQueryDto> GetById(int id, CancellationToken ct)
     {
         var product = await sender.Send(new GetProductByIdQuery { Id = id }, ct);
@@ -52,9 +50,7 @@ public class ProductsController(ISender sender) : ControllerBase
     }
 
     // Public catalog: anonymous visitors can browse products (public "search products" page).
-    // Disabled products (and products in disabled categories) are listed only for the administrator.
     [HttpGet]
-    [AllowAnonymous]
     public async Task<PageResult<ListProductsQueryDto>> List([FromQuery] ListProductsQuery query, CancellationToken ct)
     {
         var result = await sender.Send(query, ct);

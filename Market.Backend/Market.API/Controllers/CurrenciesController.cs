@@ -19,7 +19,6 @@ public class CurrenciesController(ISender sender) : ControllerBase
     /// Enabled currencies with the rate valid now (base currency first).
     /// </summary>
     [HttpGet]
-    [AllowAnonymous]
     public async Task<List<ListCurrenciesQueryDto>> List(CancellationToken ct)
     {
         var result = await sender.Send(new ListCurrenciesQuery(), ct);
@@ -31,7 +30,6 @@ public class CurrenciesController(ISender sender) : ControllerBase
     /// (optional <c>atUtc</c> uses the rates valid at that moment).
     /// </summary>
     [HttpGet("convert")]
-    [AllowAnonymous]
     public async Task<ConvertCurrencyQueryDto> Convert([FromQuery] ConvertCurrencyQuery query, CancellationToken ct)
     {
         var result = await sender.Send(query, ct);

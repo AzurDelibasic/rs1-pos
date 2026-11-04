@@ -18,13 +18,13 @@ export class CurrentUserService {
     return this.auth.currentUser();
   }
 
-  /** Pravilo: admin > ostali → client */
+  /** Pravilo: admin → /admin, menadžer i konobar → /pos */
   getDefaultRoute(): string {
     const user = this.snapshot;
     if (!user) return '/auth/login';
 
     if (user.isAdmin) return '/admin';
     if (user.isManager || user.isEmployee) return '/pos';
-    return '/client';
+    return '/auth/logout';
   }
 }

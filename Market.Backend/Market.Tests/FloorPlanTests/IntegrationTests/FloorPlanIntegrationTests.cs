@@ -25,12 +25,12 @@ public class FloorPlanIntegrationTests
     }
 
     [Fact]
-    public async Task Get_FloorPlan_Customer_ShouldReturnForbidden()
+    public async Task Get_FloorPlan_Anonymous_ShouldReturnUnauthorized()
     {
-        var client = await _factory.GetAuthenticatedClientAsync("nina.bijedic@email.com", "Customer123!");
+        var client = _factory.CreateClient();
 
         var response = await client.GetAsync("/FloorPlan");
 
-        Assert.Equal(HttpStatusCode.Forbidden, response.StatusCode);
+        Assert.Equal(HttpStatusCode.Unauthorized, response.StatusCode);
     }
 }

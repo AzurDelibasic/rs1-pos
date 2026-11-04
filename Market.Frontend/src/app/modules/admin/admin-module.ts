@@ -9,14 +9,9 @@ import {ProductCategoriesComponent} from './catalogs/product-categories/product-
 import {
   ProductCategoryUpsertComponent
 } from './catalogs/product-categories/product-category-upsert/product-category-upsert.component';
-import {AdminOrdersComponent} from './orders/admin-orders.component';
 import {SharedModule} from '../shared/shared-module';
 import {AccountModule} from '../account/account-module';
-import { OrderDetailsDialogComponent } from './orders/admin-orders-details-dialog/order-details-dialog.component';
-import { ChangeStatusDialogComponent } from './orders/change-status-dialog/change-status-dialog.component';
 import { ProductImageComponent } from './catalogs/products/product-image/product-image.component';
-import { OrderEditComponent } from './orders/order-edit/order-edit.component';
-import { ProductAutocompleteComponent } from './orders/order-edit/product-autocomplete/product-autocomplete.component';
 import { ExchangeRatesComponent } from './finance/exchange-rates/exchange-rates.component';
 import { AdminSettingsComponent } from './admin-settings/admin-settings.component';
 import { RegionUpsertComponent } from './venue/regions/region-upsert/region-upsert.component';
@@ -33,12 +28,7 @@ import { TablesComponent } from './venue/tables/tables.component';
     AdminLayoutComponent,
     ProductCategoriesComponent,
     ProductCategoryUpsertComponent,
-    AdminOrdersComponent,
-    OrderDetailsDialogComponent,
-    ChangeStatusDialogComponent,
     ProductImageComponent,
-    OrderEditComponent,
-    ProductAutocompleteComponent,
     ExchangeRatesComponent,
     AdminSettingsComponent,
     RegionUpsertComponent,
@@ -49,7 +39,7 @@ import { TablesComponent } from './venue/tables/tables.component';
   imports: [
     AdminRoutingModule,
     SharedModule,
-    // "Moj profil" (/admin/profile) – ista stranica kao /client/profile
+    // "Moj profil" (/admin/profile) – ista stranica kao /pos/profile
     AccountModule,
   ]
 })

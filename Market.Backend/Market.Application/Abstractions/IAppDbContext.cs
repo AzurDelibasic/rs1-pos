@@ -1,5 +1,4 @@
 ﻿using Market.Domain.Entities.Finance;
-using Market.Domain.Entities.Sales;
 using Market.Domain.Entities.Venue;
 
 namespace Market.Application.Abstractions;
@@ -12,9 +11,6 @@ public interface IAppDbContext
     DbSet<MarketUserEntity> Users { get; }
     DbSet<RefreshTokenEntity> RefreshTokens { get; }
     DbSet<PasswordResetTokenEntity> PasswordResetTokens { get; }
-
-    DbSet<OrderEntity> Orders{ get; }
-    DbSet<OrderItemEntity> OrderItems { get; }
 
     DbSet<CurrencyEntity> Currencies { get; }
     DbSet<ExchangeRateEntity> ExchangeRates { get; }

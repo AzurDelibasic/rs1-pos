@@ -2,7 +2,6 @@
 using Microsoft.EntityFrameworkCore;
 using Market.Domain.Entities.Catalog;
 using Market.Domain.Entities.Finance;
-using Market.Domain.Entities.Sales;
 using Market.Domain.Entities.Identity;
 using Market.Domain.Entities.Venue;
 
@@ -15,16 +14,6 @@ namespace Market.Infrastructure.Database.Seeders;
 /// </summary>
 public static class DynamicDataSeeder
 {
-    /// <summary>
-    /// Demo kupci kojima pripadaju seed narudžbe.
-    /// </summary>
-    private static readonly string[] CustomerEmails =
-    [
-        "nina.bijedic@email.com",
-        "iris.memic@email.com",
-        "azra.smajic@email.com"
-    ];
-
     public static async Task SeedAsync(DatabaseContext context)
     {
         // Šema baze se ne kreira ovdje: DatabaseInitializer prije seed-a pokreće migracije
@@ -33,7 +22,6 @@ public static class DynamicDataSeeder
         await SeedProductCategoriesAsync(context);
         await SeedUsersAsync(context);
         await SeedProductsAsync(context);
-        await SeedOrdersAsync(context);
         await SeedExchangeRatesAsync(context);
         await SeedRegionsAsync(context);
         await SeedTablesAsync(context);
@@ -166,61 +154,12 @@ public static class DynamicDataSeeder
             CreatedAtUtc = DateTime.UtcNow
         };
 
-        // Demo customers for orders
-        var customer1 = new MarketUserEntity
-        {
-            Firstname = "Nina",
-            Lastname = "Bijedić",
-            Email = "nina.bijedic@email.com",
-            PasswordHash = hasher.HashPassword(null!, "Customer123!"),
-            Address = "Bulevar Meše Selimovića 15",
-            City = "Sarajevo",
-            IsAdmin = false,
-            IsManager = false,
-            IsEmployee = false,
-            IsEnabled = true,
-            CreatedAtUtc = DateTime.UtcNow.AddDays(-30)
-        };
-
-        var customer2 = new MarketUserEntity
-        {
-            Firstname = "Iris",
-            Lastname = "Memić",
-            Email = "iris.memic@email.com",
-            PasswordHash = hasher.HashPassword(null!, "Customer123!"),
-            Address = "Kneza Domagoja 22",
-            City = "Mostar",
-            IsAdmin = false,
-            IsManager = false,
-            IsEmployee = false,
-            IsEnabled = true,
-            CreatedAtUtc = DateTime.UtcNow.AddDays(-25)
-        };
-
-        var customer3 = new MarketUserEntity
-        {
-            Firstname = "Azra",
-            Lastname = "Smajić",
-            Email = "azra.smajic@email.com",
-            PasswordHash = hasher.HashPassword(null!, "Customer123!"),
-            Address = "Trg slobode 4",
-            City = "Tuzla",
-            IsAdmin = false,
-            IsManager = false,
-            IsEmployee = false,
-            IsEnabled = true,
-            CreatedAtUtc = DateTime.UtcNow.AddDays(-20)
-        };
-
         context.Users.AddRange(
             admin,
             manager,
             employee,
             dummyForSwagger,
-            dummyForTests,
-            customer1,
-            customer2,
-            customer3
+            dummyForTests
         );
 
         await context.SaveChangesAsync();
@@ -452,195 +391,6 @@ public static class DynamicDataSeeder
     }
 
     /// <summary>
-    /// Kreira demo narudžbe (orders) sa order items.
-    /// </summary>
-    private static async Task SeedOrdersAsync(DatabaseContext context)
-    {
-        if (await context.Orders.AnyAsync())
-            return;
-
-        // Učitaj demo kupce (ne admin/manager/employee naloge) i proizvode
-        var customers = await context.Users
-            .Where(u => CustomerEmails.Contains(u.Email))
-            .ToListAsync();
-
-        // Narudžbe ispod biraju proizvode po poziciji (Skip/Take), pa redoslijed mora biti stabilan
-        var products = await context.Products
-            .Where(p => p.IsEnabled)
-            .OrderBy(p => p.Id)
-            .ToListAsync();
-
-        if (customers.Count < CustomerEmails.Length || products.Count < 12)
-        {
-            Console.WriteLine("⚠️  Demo customers or products not found. Skipping orders seed.");
-            return;
-        }
-
-        var orders = new List<OrderEntity>();
-        var orderCounter = 1;
-
-        // Order 1 - Completed (customer1, 15 dana prije)
-        var customer1 = customers.Single(c => c.Email == CustomerEmails[0]);
-        var order1Date = DateTime.UtcNow.AddDays(-15);
-        var order1Products = products.Take(3).ToList();
-
-        var order1Items = new List<OrderItemEntity>
-        {
-            CreateOrderItem(order1Products[0], 1, 0m), // Laptop
-            CreateOrderItem(order1Products[1], 1, 10m), // Desktop sa 10% popustom
-            CreateOrderItem(order1Products[2], 2, 0m)  // 2x monitor
-        };
-
-        var order1 = new OrderEntity
-        {
-            ReferenceNumber = $"ORD-{orderCounter++:D4}",
-            MarketUserId = customer1.Id,
-            OrderedAtUtc = order1Date,
-            PaidAtUtc = order1Date.AddHours(2),
-            Status = OrderStatusType.Completed,
-            TotalAmount = order1Items.Sum(i => i.Total),
-            Note = "Brza dostava molim.",
-            Items = order1Items,
-            CreatedAtUtc = order1Date
-        };
-
-        orders.Add(order1);
-
-        // Order 2 - Paid (customer2, 10 dana prije)
-        var customer2 = customers.Single(c => c.Email == CustomerEmails[1]);
-        var order2Date = DateTime.UtcNow.AddDays(-10);
-        var order2Products = products.Skip(4).Take(2).ToList(); // Phone + accessories
-
-        var order2Items = new List<OrderItemEntity>
-        {
-            CreateOrderItem(order2Products[0], 1, 5m), // Phone sa 5% popustom
-            CreateOrderItem(order2Products[1], 1, 0m)  // Accessories
-        };
-
-        var order2 = new OrderEntity
-        {
-            ReferenceNumber = $"ORD-{orderCounter++:D4}",
-            MarketUserId = customer2.Id,
-            OrderedAtUtc = order2Date,
-            PaidAtUtc = order2Date.AddMinutes(30),
-            Status = OrderStatusType.Paid,
-            TotalAmount = order2Items.Sum(i => i.Total),
-            Note = null,
-            Items = order2Items,
-            CreatedAtUtc = order2Date
-        };
-
-        orders.Add(order2);
-
-        // Order 3 - Confirmed (customer3, 5 dana prije)
-        var customer3 = customers.Single(c => c.Email == CustomerEmails[2]);
-        var order3Date = DateTime.UtcNow.AddDays(-5);
-        var order3Products = products.Skip(8).Take(4).ToList(); // PC components
-
-        var order3Items = new List<OrderItemEntity>
-        {
-            CreateOrderItem(order3Products[0], 1, 0m), // CPU
-            CreateOrderItem(order3Products[1], 1, 0m), // GPU
-            CreateOrderItem(order3Products[2], 2, 15m), // 2x RAM sa 15% popustom
-            CreateOrderItem(order3Products[3], 1, 0m)  // SSD
-        };
-
-        var order3 = new OrderEntity
-        {
-            ReferenceNumber = $"ORD-{orderCounter++:D4}",
-            MarketUserId = customer3.Id,
-            OrderedAtUtc = order3Date,
-            PaidAtUtc = null,
-            Status = OrderStatusType.Confirmed,
-            TotalAmount = order3Items.Sum(i => i.Total),
-            Note = "Kontaktirajte me prije dostave.",
-            Items = order3Items,
-            CreatedAtUtc = order3Date
-        };
-
-        orders.Add(order3);
-
-        // Order 4 - Draft (customer1, 2 dana prije)
-        var order4Date = DateTime.UtcNow.AddDays(-2);
-        var order4Products = products.Skip(6).Take(2).ToList();
-
-        var order4Items = new List<OrderItemEntity>
-        {
-            CreateOrderItem(order4Products[0], 1, 0m),
-            CreateOrderItem(order4Products[1], 3, 20m) // 3x keyboards sa 20% popustom
-        };
-
-        var order4 = new OrderEntity
-        {
-            ReferenceNumber = $"ORD-{orderCounter++:D4}",
-            MarketUserId = customer1.Id,
-            OrderedAtUtc = order4Date,
-            PaidAtUtc = null,
-            Status = OrderStatusType.Draft,
-            TotalAmount = order4Items.Sum(i => i.Total),
-            Note = "Još razmišljam o boji...",
-            Items = order4Items,
-            CreatedAtUtc = order4Date
-        };
-
-        orders.Add(order4);
-
-        // Order 5 - Cancelled (customer2, 7 dana prije)
-        var order5Date = DateTime.UtcNow.AddDays(-7);
-        var order5Products = products.Skip(3).Take(1).ToList();
-
-        var order5Items = new List<OrderItemEntity>
-        {
-            CreateOrderItem(order5Products[0], 1, 0m)
-        };
-
-        var order5 = new OrderEntity
-        {
-            ReferenceNumber = $"ORD-{orderCounter++:D4}",
-            MarketUserId = customer2.Id,
-            OrderedAtUtc = order5Date,
-            PaidAtUtc = null,
-            Status = OrderStatusType.Cancelled,
-            TotalAmount = order5Items.Sum(i => i.Total),
-            Note = "Otkazan na zahtjev korisnika.",
-            Items = order5Items,
-            CreatedAtUtc = order5Date
-        };
-
-        orders.Add(order5);
-
-        // Order 6 - Recent Paid (customer3, 1 dan prije)
-        var order6Date = DateTime.UtcNow.AddDays(-1);
-        var order6Products = products.Skip(10).Take(2).ToList();
-
-        var order6Items = new List<OrderItemEntity>
-        {
-            CreateOrderItem(order6Products[0], 2, 0m),
-            CreateOrderItem(order6Products[1], 1, 5m)
-        };
-
-        var order6 = new OrderEntity
-        {
-            ReferenceNumber = $"ORD-{orderCounter++:D4}",
-            MarketUserId = customer3.Id,
-            OrderedAtUtc = order6Date,
-            PaidAtUtc = order6Date.AddHours(1),
-            Status = OrderStatusType.Paid,
-            TotalAmount = order6Items.Sum(i => i.Total),
-            Note = "Express dostava.",
-            Items = order6Items,
-            CreatedAtUtc = order6Date
-        };
-
-        orders.Add(order6);
-
-        context.Orders.AddRange(orders);
-        await context.SaveChangesAsync();
-
-        Console.WriteLine($"✅ Dynamic seed: {orders.Count} orders added with {orders.Sum(o => o.Items.Count)} total items.");
-    }
-
-    /// <summary>
     /// Približni kursevi za USD, CHF, GBP i RSD na četiri datuma u 2026, da konverzija radi odmah nakon pokretanja.
     /// Valute i fiksni kurs EUR (1,95583) dolaze iz migracije (StaticDataSeeder).
     /// Nisu stvarni kursevi: u produkciji ih unosi administrator ili se preuzimaju preko ExchangeRates:Provider.
@@ -697,35 +447,6 @@ public static class DynamicDataSeeder
         await context.SaveChangesAsync();
 
         Console.WriteLine($"✅ Dynamic seed: {rates.Count} approximate exchange rates added.");
-    }
-
-    /// <summary>
-    /// Helper metoda za kreiranje order itema sa kalkulacijama.
-    /// </summary>
-    private static OrderItemEntity CreateOrderItem(
-        ProductEntity product,
-        decimal quantity,
-        decimal discountPercent)
-    {
-        var unitPrice = product.Price;
-        var subtotal = quantity * unitPrice;
-        var discountAmount = discountPercent > 0
-            ? Math.Round(subtotal * (discountPercent / 100), 2)
-            : 0m;
-        var total = subtotal - discountAmount;
-
-        return new OrderItemEntity
-        {
-            ProductId = product.Id,
-            Quantity = quantity,
-            UnitPrice = unitPrice,
-            Subtotal = subtotal,
-            DiscountPercent = discountPercent > 0 ? discountPercent : null,
-            DiscountAmount = discountAmount > 0 ? discountAmount : null,
-            Total = total,
-            Order = null, // EF sets the relationship when the item is added to OrderEntity.Items
-            CreatedAtUtc = DateTime.UtcNow
-        };
     }
 
     private static async Task SeedRegionsAsync(DatabaseContext context)

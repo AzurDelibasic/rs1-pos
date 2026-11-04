@@ -47,9 +47,7 @@ public class ProductCategoriesController(ISender sender) : ControllerBase
         return category; // if NotFoundException -> 404 via middleware
     }
 
-    // Public catalog: anonymous visitors can list categories (e.g. category filter on the public page).
     [HttpGet]
-    [AllowAnonymous]
     public async Task<PageResult<ListProductCategoriesQueryDto>> List([FromQuery] ListProductCategoriesQuery query, CancellationToken ct)
     {
         var result = await sender.Send(query, ct);

@@ -1,5 +1,4 @@
 ﻿using Market.Domain.Common;
-using Market.Domain.Entities.Sales;
 
 namespace Market.Domain.Entities.Catalog;
 
@@ -48,15 +47,6 @@ public class ProductEntity : BaseEntity
     /// Set only by the image upload endpoint; the client shows it as <c>apiUrl + imageUrl</c>.
     /// </summary>
     public string? ImageUrl { get; set; }
-
-    ///// <summary>
-    ///// Collection of order items.
-    /////
-    ///// **Napomena za studente:**
-
-    ///// </summary>
-    //public IReadOnlyCollection<OrderItemEntity> Items { get; set; } = new List<OrderItemEntity>();
-
 
     /// <summary>
     /// Single source of truth for technical/business constraints.

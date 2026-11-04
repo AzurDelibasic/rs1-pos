@@ -22,20 +22,8 @@ const routes: Routes = [
     loadChildren: () =>
       import('./modules/auth/auth-module').then(m => m.AuthModule)
   },
-  {
-    path: 'client',
-    canActivate: [myAuthGuard],
-    data: myAuthData({ requireAuth: true }),// bilo ko logiran
-    loadChildren: () =>
-      import('./modules/client/client-module').then(m => m.ClientModule)
-  },
-  {
-    path: '',
-    loadChildren: () =>
-      import('./modules/public/public-module').then(m => m.PublicModule)
-  },
-  // fallback 404
-  { path: '**', redirectTo: '' }
+  { path: '', redirectTo: 'auth/login', pathMatch: 'full' },
+  { path: '**', redirectTo: 'auth/login' }
 ];
 
 @NgModule({
