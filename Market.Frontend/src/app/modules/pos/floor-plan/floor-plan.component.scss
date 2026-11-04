@@ -1,0 +1,224 @@
+$primary-color: #4976b5;
+$primary-dark: #3a5e91;
+$primary-lighter: #e8f0f9;
+$text-primary: #2c3e50;
+$text-secondary: #546e7a;
+$border-color: #e3e8ef;
+$shadow-sm: 0 2px 8px rgba(73, 118, 181, 0.08);
+$shadow-md: 0 4px 12px rgba(73, 118, 181, 0.12);
+
+$free-color: #2e7d32;
+$free-bg: #e8f5e9;
+$occupied-color: #c62828;
+$occupied-bg: #ffebee;
+$reserved-color: #ef6c00;
+$reserved-bg: #fff3e0;
+
+.container {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.header-card {
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: $shadow-sm;
+  border: 1px solid $border-color;
+  padding: 20px 24px;
+}
+
+.header-card-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.title-section {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  h1 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 600;
+    color: $text-primary;
+  }
+}
+
+.title-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, $primary-color 0%, $primary-dark 100%);
+  color: #ffffff;
+}
+
+.actions-container {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  color: $text-secondary;
+
+  .legend-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+  }
+
+  &.free .legend-dot { background: $free-color; }
+  &.occupied .legend-dot { background: $occupied-color; }
+  &.reserved .legend-dot { background: $reserved-color; }
+}
+
+.loading-container,
+.error-container,
+.no-data-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 48px 24px;
+  color: $text-secondary;
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px solid $border-color;
+}
+
+.error-container mat-icon {
+  color: $occupied-color;
+}
+
+.region-card {
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: $shadow-sm;
+  border: 1px solid $border-color;
+  padding: 20px 24px;
+}
+
+.region-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+  color: $primary-dark;
+
+  h2 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 600;
+    color: $text-primary;
+  }
+
+  .region-count {
+    margin-left: auto;
+    min-width: 28px;
+    padding: 2px 10px;
+    border-radius: 12px;
+    background: $primary-lighter;
+    color: $primary-dark;
+    font-weight: 600;
+    text-align: center;
+  }
+}
+
+.region-empty {
+  margin: 0;
+  color: $text-secondary;
+}
+
+.tables-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 14px;
+}
+
+.table-tile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 16px 12px;
+  border-radius: 14px;
+  border: 2px solid transparent;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: $shadow-md;
+  }
+
+  .table-label {
+    font-size: 22px;
+    font-weight: 700;
+  }
+
+  .table-seats {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 14px;
+    color: $text-secondary;
+
+    mat-icon {
+      font-size: 18px;
+      width: 18px;
+      height: 18px;
+    }
+  }
+
+  .table-status {
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  &.free {
+    background: $free-bg;
+    border-color: $free-color;
+    .table-label, .table-status { color: $free-color; }
+  }
+
+  &.occupied {
+    background: $occupied-bg;
+    border-color: $occupied-color;
+    .table-label, .table-status { color: $occupied-color; }
+  }
+
+  &.reserved {
+    background: $reserved-bg;
+    border-color: $reserved-color;
+    .table-label, .table-status { color: $reserved-color; }
+  }
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 12px;
+  }
+
+  .tables-grid {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  }
+}

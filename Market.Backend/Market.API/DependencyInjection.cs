@@ -109,6 +109,13 @@ public static class DependencyInjection
             o.AddPolicy(PolicyNames.Admin, policy => policy
                 .RequireAuthenticatedUser()
                 .RequireClaim("is_admin", "true"));
+
+            o.AddPolicy(PolicyNames.Staff, policy => policy
+                .RequireAuthenticatedUser()
+                .RequireAssertion(ctx =>
+                    ctx.User.HasClaim("is_admin", "true") ||
+                    ctx.User.HasClaim("is_manager", "true") ||
+                    ctx.User.HasClaim("is_employee", "true")));
         });
 
         // Swagger with Bearer auth

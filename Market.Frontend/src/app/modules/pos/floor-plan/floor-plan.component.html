@@ -1,0 +1,78 @@
+<div class="container">
+  <div class="header-card">
+    <div class="header-card-content">
+      <div class="title-section">
+        <div class="title-icon">
+          <mat-icon>grid_view</mat-icon>
+        </div>
+        <h1>{{ 'POS.FLOOR_PLAN.TITLE' | translate }}</h1>
+      </div>
+
+      <div class="actions-container">
+        <div class="legend">
+          @for (status of statuses; track status.value) {
+          <span class="legend-item {{ status.cssClass }}">
+            <span class="legend-dot"></span>
+            {{ status.key | translate }}
+          </span>
+          }
+        </div>
+
+        <button mat-raised-button color="primary" (click)="loadFloorPlan()" [disabled]="isLoading" class="add-button">
+          <mat-icon>refresh</mat-icon>
+          <span>{{ 'POS.FLOOR_PLAN.REFRESH' | translate }}</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  @if (isLoading) {
+  <div class="loading-container">
+    <mat-spinner diameter="48" color="primary"></mat-spinner>
+    <p>{{ 'POS.FLOOR_PLAN.LOADING' | translate }}</p>
+  </div>
+  }
+
+  @if (!isLoading && errorMessage) {
+  <div class="error-container">
+    <mat-icon>error_outline</mat-icon>
+    <p>{{ errorMessage }}</p>
+  </div>
+  }
+
+  @if (!isLoading && !errorMessage) {
+    @if (regions.length === 0) {
+    <div class="no-data-content">
+      <mat-icon>inbox</mat-icon>
+      <p>{{ 'POS.FLOOR_PLAN.NO_DATA' | translate }}</p>
+    </div>
+    }
+
+    @for (region of regions; track region.id) {
+    <section class="region-card">
+      <div class="region-header">
+        <mat-icon>table_restaurant</mat-icon>
+        <h2>{{ region.name }}</h2>
+        <span class="region-count">{{ region.tables.length }}</span>
+      </div>
+
+      @if (region.tables.length === 0) {
+      <p class="region-empty">{{ 'POS.FLOOR_PLAN.NO_TABLES' | translate }}</p>
+      } @else {
+      <div class="tables-grid">
+        @for (table of region.tables; track table.id) {
+        <div class="table-tile {{ statusOf(table.status).cssClass }}">
+          <div class="table-label">{{ table.label }}</div>
+          <div class="table-seats">
+            <mat-icon>event_seat</mat-icon>
+            {{ table.seats }}
+          </div>
+          <div class="table-status">{{ statusOf(table.status).key | translate }}</div>
+        </div>
+        }
+      </div>
+      }
+    </section>
+    }
+  }
+</div>

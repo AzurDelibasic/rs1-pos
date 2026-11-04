@@ -24,6 +24,7 @@ export class CurrentUserService {
     if (!user) return '/auth/login';
 
     if (user.isAdmin) return '/admin';
+    if (user.isManager || user.isEmployee) return '/pos';
     return '/client';
   }
 }
