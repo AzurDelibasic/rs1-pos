@@ -232,7 +232,8 @@
       "LOGOUT": "Odjava",
       "EXCHANGE_RATES": "Kursna lista",
       "VENUE": "OBJEKAT",
-      "REGIONS": "Regije"
+      "REGIONS": "Regije",
+      "TABLES": "Stolovi"
     }
   },
   "ADMIN_SETTINGS": {
@@ -335,6 +336,57 @@
       "ERROR_TOGGLE": "Greška pri promjeni statusa regije \"{{name}}\".",
       "ERROR_LOAD": "Greška pri učitavanju regije.",
       "ERROR_LOAD_LIST": "Greška pri učitavanju regija."
+    }
+  },
+  "TABLES": {
+    "TITLE": "Stolovi",
+    "SEARCH_PLACEHOLDER": "Pretraži stolove",
+    "SEARCH_INPUT_PLACEHOLDER": "Unesite oznaku stola...",
+    "REGION_FILTER": "Regija",
+    "ALL_REGIONS": "Sve regije",
+    "ONLY_ACTIVE": "Samo aktivni",
+    "NEW_TABLE": "Novi sto",
+    "LOADING": "Učitavanje stolova...",
+    "NO_DATA": "Nema stolova za prikaz",
+    "NO_DATA_FILTER": "Nema rezultata za izabrane filtere",
+    "TABLE": {
+      "REGION": "Regija",
+      "LABEL": "Oznaka",
+      "SEATS": "Broj mjesta",
+      "STATUS": "Status",
+      "ACTIVE": "Aktivan",
+      "INACTIVE": "Neaktivan",
+      "ACTIONS": "Akcije"
+    },
+    "ACTIONS": {
+      "EDIT_TOOLTIP": "Uredi sto",
+      "DELETE_TOOLTIP": "Obriši sto"
+    },
+    "FORM": {
+      "REGION": "Regija",
+      "LABEL": "Oznaka stola",
+      "LABEL_PLACEHOLDER": "npr. S1, T3, Š2",
+      "SEATS": "Broj mjesta",
+      "IS_ACTIVE": "Aktivan",
+      "LOADING": "Učitavanje...",
+      "CANCEL": "Otkaži",
+      "SAVE": "Sačuvaj",
+      "UPDATE": "Ažuriraj",
+      "CREATE_TITLE": "Novi sto",
+      "EDIT_TITLE": "Uredi sto"
+    },
+    "DIALOGS": {
+      "DELETE_MESSAGE": "Da li ste sigurni da želite obrisati sto \"{{name}}\"?",
+      "SUCCESS_CREATE": "Sto uspješno kreiran.",
+      "SUCCESS_UPDATE": "Sto uspješno ažuriran.",
+      "SUCCESS_DELETE": "Sto uspješno obrisan.",
+      "SUCCESS_ACTIVATE": "Sto \"{{name}}\" je aktiviran.",
+      "SUCCESS_DEACTIVATE": "Sto \"{{name}}\" je deaktiviran.",
+      "ERROR_DELETE": "Greška pri brisanju stola.",
+      "ERROR_TOGGLE": "Greška pri promjeni statusa stola \"{{name}}\".",
+      "ERROR_LOAD": "Greška pri učitavanju stola.",
+      "ERROR_LOAD_LIST": "Greška pri učitavanju stolova.",
+      "ERROR_LOAD_REGIONS": "Greška pri učitavanju regija."
     }
   },
   "PRODUCTS": {

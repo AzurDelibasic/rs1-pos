@@ -11,11 +11,20 @@ public sealed class DeactivateRegionCommandHandler(IAppDbContext ctx)
         if (entity is null)
             throw new MarketNotFoundException($"Regija (ID={request.Id}) nije pronađena.");
 
-        if (entity.IsActive)
+        if (!entity.IsActive) return Unit.Value;
+
+        var hasActiveTables = await ctx.Tables
+            .AnyAsync(t => t.RegionId == entity.Id && t.IsActive, ct);
+
+        if (hasActiveTables)
         {
-            entity.IsActive = false;
-            await ctx.SaveChangesAsync(ct);
+            throw new MarketBusinessRuleException("region.deactivate.blocked.activeTables",
+                $"Regija {entity.Name} se ne može deaktivirati jer sadrži aktivne stolove.");
         }
+
+        entity.IsActive = false;
+
+        await ctx.SaveChangesAsync(ct);
 
         return Unit.Value;
     }

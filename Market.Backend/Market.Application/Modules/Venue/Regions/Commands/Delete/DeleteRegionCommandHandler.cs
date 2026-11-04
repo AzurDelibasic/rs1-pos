@@ -14,6 +14,14 @@ public sealed class DeleteRegionCommandHandler(IAppDbContext context, IAppCurren
         if (region is null)
             throw new MarketNotFoundException($"Regija (ID={request.Id}) nije pronađena.");
 
+        var hasTables = await context.Tables
+            .AnyAsync(t => t.RegionId == region.Id, cancellationToken);
+
+        if (hasTables)
+            throw new MarketConflictException(
+                $"Regija {region.Name} se ne može obrisati jer sadrži stolove. " +
+                "Premjestite stolove u drugu regiju ili deaktivirajte regiju.");
+
         context.Regions.Remove(region);
         await context.SaveChangesAsync(cancellationToken);
 

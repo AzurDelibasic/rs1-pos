@@ -36,6 +36,7 @@ public static class DynamicDataSeeder
         await SeedOrdersAsync(context);
         await SeedExchangeRatesAsync(context);
         await SeedRegionsAsync(context);
+        await SeedTablesAsync(context);
     }
 
     private static async Task SeedProductCategoriesAsync(DatabaseContext context)
@@ -741,5 +742,43 @@ public static class DynamicDataSeeder
         await context.SaveChangesAsync();
 
         Console.WriteLine("Dynamic seed: regions added.");
+    }
+
+    private static async Task SeedTablesAsync(DatabaseContext context)
+    {
+        if (await context.Tables.AnyAsync())
+            return;
+
+        var regions = await context.Regions
+            .Where(r => r.IsActive)
+            .ToDictionaryAsync(r => r.Name);
+
+        var tables = new List<TableEntity>();
+
+        if (regions.TryGetValue("Sala", out var hall))
+        {
+            for (int i = 1; i <= 6; i++)
+                tables.Add(new TableEntity { Label = $"S{i}", Seats = 4, RegionId = hall.Id, IsActive = true });
+        }
+
+        if (regions.TryGetValue("Šank", out var bar))
+        {
+            for (int i = 1; i <= 4; i++)
+                tables.Add(new TableEntity { Label = $"Š{i}", Seats = 2, RegionId = bar.Id, IsActive = true });
+        }
+
+        if (regions.TryGetValue("Terasa", out var terrace))
+        {
+            for (int i = 1; i <= 4; i++)
+                tables.Add(new TableEntity { Label = $"T{i}", Seats = 6, RegionId = terrace.Id, IsActive = true });
+        }
+
+        if (tables.Count == 0)
+            return;
+
+        context.Tables.AddRange(tables);
+        await context.SaveChangesAsync();
+
+        Console.WriteLine("Dynamic seed: tables added.");
     }
 }

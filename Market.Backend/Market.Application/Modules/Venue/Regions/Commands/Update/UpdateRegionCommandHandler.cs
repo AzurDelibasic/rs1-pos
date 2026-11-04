@@ -19,6 +19,16 @@ public sealed class UpdateRegionCommandHandler(IAppDbContext context)
         if (exists)
             throw new MarketConflictException($"Regija sa nazivom {name} već postoji.");
 
+        if (region.IsActive && !request.IsActive)
+        {
+            var hasActiveTables = await context.Tables
+                .AnyAsync(t => t.RegionId == region.Id && t.IsActive, cancellationToken);
+
+            if (hasActiveTables)
+                throw new MarketBusinessRuleException("region.deactivate.blocked.activeTables",
+                    $"Regija {region.Name} se ne može deaktivirati jer sadrži aktivne stolove.");
+        }
+
         region.Name = name;
         region.SortOrder = request.SortOrder;
         region.IsActive = request.IsActive;
