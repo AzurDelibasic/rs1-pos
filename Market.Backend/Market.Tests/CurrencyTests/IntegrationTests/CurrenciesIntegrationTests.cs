@@ -17,10 +17,12 @@ public class CurrenciesIntegrationTests
     }
 
     [Fact]
-    public async Task Get_Currencies_Anonymous_ReturnsSeededCurrenciesWithBaseFirst()
+    public async Task Get_Currencies_Employee_ReturnsSeededCurrenciesWithBaseFirst()
     {
         // Arrange
-        var client = _factory.CreateClient(); // no Bearer token
+        var client = await _factory.GetAuthenticatedClientAsync(
+            CustomWebApplicationFactory<Program>.EmployeeEmail,
+            CustomWebApplicationFactory<Program>.EmployeePassword);
 
         // Act
         var currencies = await client.GetFromJsonAsync<List<ListCurrenciesQueryDto>>("/Currencies");
@@ -34,10 +36,12 @@ public class CurrenciesIntegrationTests
     }
 
     [Fact]
-    public async Task Get_Convert_Anonymous_ConvertsWithFixedEurRate()
+    public async Task Get_Convert_Employee_ConvertsWithFixedEurRate()
     {
         // Arrange
-        var client = _factory.CreateClient();
+        var client = await _factory.GetAuthenticatedClientAsync(
+            CustomWebApplicationFactory<Program>.EmployeeEmail,
+            CustomWebApplicationFactory<Program>.EmployeePassword);
 
         // Act
         var result = await client.GetFromJsonAsync<ConvertCurrencyQueryDto>("/Currencies/convert?amount=100&from=eur&to=BAM");

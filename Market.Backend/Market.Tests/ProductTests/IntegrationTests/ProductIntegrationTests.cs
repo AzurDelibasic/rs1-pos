@@ -50,19 +50,21 @@ public class ProductIntegrationTests
     {
         // Arrange
         var admin = await _factory.GetAuthenticatedClientAsync();
-        var anonymous = _factory.CreateClient();
+        var employee = await _factory.GetAuthenticatedClientAsync(
+            CustomWebApplicationFactory<Program>.EmployeeEmail,
+            CustomWebApplicationFactory<Program>.EmployeePassword);
         var name = $"Disabled {Guid.NewGuid():N}";
         var id = await CreateProductAsync(admin, name, isEnabled: false);
 
         // Act
         var adminList = await admin.GetFromJsonAsync<PageResult<ListProductsQueryDto>>($"/Products?search={name}");
-        var anonymousList = await anonymous.GetFromJsonAsync<PageResult<ListProductsQueryDto>>($"/Products?search={name}");
-        var anonymousGet = await anonymous.GetAsync($"/Products/{id}");
+        var employeeList = await employee.GetFromJsonAsync<PageResult<ListProductsQueryDto>>($"/Products?search={name}");
+        var employeeGet = await employee.GetAsync($"/Products/{id}");
 
         // Assert
         Assert.Single(adminList!.Items);
-        Assert.Empty(anonymousList!.Items);
-        Assert.Equal(HttpStatusCode.NotFound, anonymousGet.StatusCode);
+        Assert.Empty(employeeList!.Items);
+        Assert.Equal(HttpStatusCode.NotFound, employeeGet.StatusCode);
     }
 
     [Fact]

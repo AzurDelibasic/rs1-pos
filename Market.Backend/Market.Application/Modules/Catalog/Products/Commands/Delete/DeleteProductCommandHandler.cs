@@ -15,16 +15,6 @@ public class DeleteProductCommandHandler(IAppDbContext context, IAppCurrentUser 
         if (product is null)
             throw new MarketNotFoundException("Proizvod nije pronađen.");
 
-        // Soft delete never reaches the database as DELETE, so the FK (Restrict) cannot protect us here.
-        // A product that appears in orders must stay, otherwise the order history would point to a deleted product.
-        var isUsedInOrders = await context.OrderItems
-            .AnyAsync(oi => oi.ProductId == product.Id, cancellationToken);
-
-        if (isUsedInOrders)
-            throw new MarketConflictException(
-                $"Proizvod {product.Name} se ne može obrisati jer se nalazi u narudžbama. " +
-                "Umjesto brisanja, onemogućite proizvod.");
-
         context.Products.Remove(product);
         await context.SaveChangesAsync(cancellationToken);
 

@@ -11,7 +11,6 @@ import { FitLoadingBarComponent } from './components/fit-loading-bar/fit-loading
 import { FitTableSkeletonComponent } from './components/fit-table-skeleton/fit-table-skeleton.component';
 import { FitFieldErrorComponent } from './components/fit-field-error/fit-field-error.component';
 import { CurrencySelectorComponent } from './components/currency-selector/currency-selector.component';
-import { StoreHeaderComponent } from './components/store-header/store-header.component';
 import { MoneyPipe } from './pipes/money.pipe';
 import { ApiUrlPipe } from './pipes/api-url.pipe';
 
@@ -25,13 +24,11 @@ import { ApiUrlPipe } from './pipes/api-url.pipe';
     FitTableSkeletonComponent,
     FitFieldErrorComponent,
     CurrencySelectorComponent,
-    StoreHeaderComponent,
     MoneyPipe,
     ApiUrlPipe
   ],
   imports: [
     CommonModule,
-    // routerLink u StoreHeaderComponent (samo direktive, bez ruta)
     RouterModule,
     ReactiveFormsModule,
     FormsModule,
@@ -51,7 +48,6 @@ import { ApiUrlPipe } from './pipes/api-url.pipe';
     FitTableSkeletonComponent,
     FitFieldErrorComponent,
     CurrencySelectorComponent,
-    StoreHeaderComponent,
     MoneyPipe,
     ApiUrlPipe,
     materialModules

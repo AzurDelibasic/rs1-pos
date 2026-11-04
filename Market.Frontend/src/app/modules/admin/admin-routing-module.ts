@@ -6,12 +6,9 @@ import { ProductsComponent } from './catalogs/products/products.component';
 import { ProductsAddComponent } from './catalogs/products/products-add/products-add.component';
 import { ProductsEditComponent } from './catalogs/products/products-edit/products-edit.component';
 import { ProductCategoriesComponent } from './catalogs/product-categories/product-categories.component';
-import {AdminOrdersComponent} from './orders/admin-orders.component';
 import {MyProfileComponent} from '../account/my-profile/my-profile.component';
 import {AdminSettingsComponent} from './admin-settings/admin-settings.component';
-import {OrderEditComponent} from './orders/order-edit/order-edit.component';
 import {ExchangeRatesComponent} from './finance/exchange-rates/exchange-rates.component';
-import {unsavedChangesGuard} from '../shared/guards/unsaved-changes.guard';
 import {RegionsComponent} from './venue/regions/regions.component';
 import {TablesComponent} from './venue/tables/tables.component';
 
@@ -49,18 +46,6 @@ const routes: Routes = [
         component: TablesComponent,
       },
 
-      // ORDERS
-      {
-        path: 'orders',
-        component: AdminOrdersComponent,
-      },
-      {
-        // canDeactivate: pita prije napuštanja stranice sa nesačuvanim izmjenama
-        path: 'orders/:id/edit',
-        component: OrderEditComponent,
-        canDeactivate: [unsavedChangesGuard],
-      },
-
       // FINANCE
       {
         path: 'exchange-rates',
@@ -73,7 +58,7 @@ const routes: Routes = [
         component: AdminSettingsComponent,
       },
 
-      // MOJ PROFIL (ista stranica kao /client/profile, deklarisana u AccountModule)
+      // MOJ PROFIL (ista stranica kao /pos/profile, deklarisana u AccountModule)
       {
         path: 'profile',
         component: MyProfileComponent,

@@ -13,8 +13,6 @@ import {
   LogoutCommand,
   RefreshTokenCommand,
   RefreshTokenCommandDto,
-  RegisterCommand,
-  RegisterCommandDto,
 } from '../../../api-services/auth/auth-api.model';
 
 import { AuthStorageService } from './auth-storage.service';
@@ -76,19 +74,6 @@ export class AuthFacadeService {
       tap((response: LoginCommandDto) => {
         this.storage.saveLogin(response);           // access + refresh + expiries
         this.decodeAndSetUser(response.accessToken); // popuni _currentUser
-      }),
-      map(() => void 0)
-    );
-  }
-
-  /**
-   * Registracija novog kupca. Backend vraća tokene (kao login), pa je korisnik odmah prijavljen.
-   */
-  register(payload: RegisterCommand): Observable<void> {
-    return this.api.register(payload).pipe(
-      tap((response: RegisterCommandDto) => {
-        this.storage.saveLogin(response);
-        this.decodeAndSetUser(response.accessToken);
       }),
       map(() => void 0)
     );

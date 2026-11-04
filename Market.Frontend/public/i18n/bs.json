@@ -16,27 +16,12 @@
       "SUBTITLE": "Unesite vaše podatke za pristup",
       "SHOW_PASSWORD": "Prikaži lozinku",
       "HIDE_PASSWORD": "Sakrij lozinku",
-      "FORGOT_PASSWORD": "Zaboravili ste lozinku?",
-      "OR": "ili",
-      "NO_ACCOUNT": "Nemate nalog?",
-      "REGISTER": "Registrujte se",
-      "BACK_TO_HOME": "Nazad na početnu"
+      "FORGOT_PASSWORD": "Zaboravili ste lozinku?"
     },
     "LOGOUT": {
       "TITLE": "Odjava",
       "MESSAGE": "Odjavljivanje sa sistema...",
       "REDIRECT_IN": "Preusmjeravanje za {{seconds}}s"
-    },
-    "REGISTER": {
-      "TAGLINE": "Napravite nalog za kupovinu",
-      "TITLE": "Registracija",
-      "SUBTITLE": "Unesite podatke za novi nalog",
-      "BUTTON": "Registruj se",
-      "LOADING": "Registracija...",
-      "OR": "ili",
-      "HAVE_ACCOUNT": "Već imate nalog?",
-      "LOGIN": "Prijavite se",
-      "BACK_TO_HOME": "Nazad na početnu"
     },
     "FORGOT_PASSWORD": {
       "TAGLINE": "Vratite pristup svom nalogu",
@@ -48,8 +33,7 @@
       "DEV_HINT": "U razvoju se email ispisuje u log backenda.",
       "BACK_TO_LOGIN": "Nazad na prijavu",
       "REMEMBERED": "Sjetili ste se lozinke?",
-      "LOGIN": "Prijavite se",
-      "BACK_TO_HOME": "Nazad na početnu"
+      "LOGIN": "Prijavite se"
     },
     "RESET_PASSWORD": {
       "TAGLINE": "Postavite novu lozinku",
@@ -92,126 +76,9 @@
       "SUCCESS": "Lozinka je promijenjena. Ostali uređaji su odjavljeni."
     }
   },
-  "PUBLIC": {
-    "NAV": {
-      "SEARCH_PRODUCTS": "Pretraga proizvoda",
-      "MY_ACCOUNT": "Moj nalog",
-      "LOGIN": "Prijava",
-      "CONVERTER": "Konvertor valuta",
-      "CART": "Korpa",
-      "MY_ORDERS": "Moje narudžbe",
-      "MY_PROFILE": "Moj profil",
-      "ADMIN_PANEL": "Admin panel",
-      "LOGOUT": "Odjava"
-    }
-  },
-  "LANDING": {
-    "HERO_TITLE": "Vaš online market",
-    "HERO_DESCRIPTION": "Pregledajte ponudu, dodajte proizvode u korpu i naručite u nekoliko koraka. Cijene možete vidjeti i u drugim valutama.",
-    "BROWSE_PRODUCTS": "Pregledaj proizvode",
-    "STATS_PRODUCTS": "{{count}} proizvoda",
-    "STATS_CATEGORIES": "{{count}} kategorija",
-    "STATS_CURRENCIES": "Cijene u više valuta",
-    "LOADING": "Učitavanje ponude...",
-    "ERROR": "Ponuda trenutno nije dostupna.",
-    "CATEGORIES_TITLE": "Kategorije",
-    "NEWEST_TITLE": "Najnoviji proizvodi",
-    "NEWEST_SUBTITLE": "Pogledajte šta je novo u ponudi",
-    "ALL_PRODUCTS": "Svi proizvodi",
-    "NO_PRODUCTS": "Trenutno nema proizvoda u ponudi.",
-    "CTA_TITLE": "Spremni za kupovinu?",
-    "CTA_TEXT": "Prijavite se da biste naručili i pratili svoje narudžbe.",
-    "CTA_BUTTON": "Prijavite se"
-  },
-  "SEARCH": {
-    "TITLE": "Pretraga proizvoda",
-    "SEARCH_LABEL": "Pretraga",
-    "SEARCH_PLACEHOLDER": "Naziv proizvoda...",
-    "CATEGORY_LABEL": "Kategorija",
-    "ALL_CATEGORIES": "Sve kategorije",
-    "CLEAR_FILTERS": "Očisti filtere",
-    "LOADING": "Učitavanje proizvoda...",
-    "NO_RESULTS": "Nema proizvoda koji odgovaraju pretrazi."
-  },
-  "PRODUCT_CARD": {
-    "ADD_TO_CART": "Dodaj u korpu",
-    "OUT_OF_STOCK": "Nema na stanju"
-  },
-  "CART": {
-    "TITLE": "Korpa",
-    "ADDED": "\"{{name}}\" je dodan u korpu.",
-    "EMPTY_TITLE": "Korpa je prazna",
-    "EMPTY_TEXT": "Dodajte proizvode u korpu da biste naručili.",
-    "CONTINUE_SHOPPING": "Nastavi kupovinu",
-    "CHECKOUT": "Nastavi na narudžbu",
-    "REMOVE": "Ukloni iz korpe",
-    "INCREASE": "Povećaj količinu",
-    "DECREASE": "Smanji količinu",
-    "QUANTITY": "Količina",
-    "SUMMARY": "Pregled",
-    "ITEMS_COUNT": "Broj artikala",
-    "TOTAL_QUANTITY": "Ukupna količina",
-    "TOTAL": "Ukupno",
-    "PRICE_NOTE": "Cijene u korpi su informativne; konačan iznos (sa popustima) računa se pri narudžbi."
-  },
-  "CHECKOUT": {
-    "TITLE": "Narudžba",
-    "EMPTY_TEXT": "Dodajte proizvode u korpu prije narudžbe.",
-    "STEP_CART": "Korpa",
-    "STEP_DETAILS": "Napomena",
-    "STEP_SUBMIT": "Potvrda",
-    "BACK_TO_CART": "Nazad na korpu",
-    "NEXT": "Dalje",
-    "BACK": "Nazad",
-    "NOTE_LABEL": "Napomena (opciono)",
-    "NOTE_PLACEHOLDER": "Npr. vrijeme dostave, sprat...",
-    "CONFIRM_LABEL": "Provjerio/la sam narudžbu i želim je poslati.",
-    "CONFIRM_REQUIRED": "Potvrdite narudžbu da biste nastavili.",
-    "SUBMIT": "Naruči",
-    "SUBMITTING": "Slanje narudžbe...",
-    "SUCCESS": "Narudžba je uspješno kreirana.",
-    "DELIVERY_ADDRESS": "Adresa za dostavu",
-    "ADDRESS_MISSING": "Adresa ili grad nisu uneseni.",
-    "ADD_ADDRESS": "Unesite ih u profilu",
-    "ADDRESS_NOTE": "Narudžba se dostavlja na adresu iz vašeg profila (Moj profil)."
-  },
   "CURRENCY": {
     "SELECT": "Valuta za prikaz cijena",
     "KM_NOTE": "Narudžba se obračunava u KM; iznos u drugoj valuti je informativan."
-  },
-  "CONVERTER": {
-    "TITLE": "Konvertor valuta",
-    "INTRO": "Iznos preračunava server po kursnoj listi; za raniji datum koristi se kurs koji je tada važio.",
-    "AMOUNT": "Iznos",
-    "FROM": "Iz valute",
-    "TO": "U valutu",
-    "SWAP": "Zamijeni valute",
-    "DATE": "Datum kursa (opciono)",
-    "DATE_HINT": "Prazno = današnji kurs",
-    "CONVERT": "Preračunaj",
-    "RATE": "Kurs",
-    "RATE_DATE": "Kurs važi od"
-  },
-  "CLIENT": {
-    "HOME": {
-      "TITLE": "Dobrodošli",
-      "LOGGED_IN_AS": "Prijavljeni ste kao {{email}}.",
-      "DESCRIPTION": "Pregledajte svoje narudžbe ili ponudu proizvoda.",
-      "SEARCH_PRODUCTS": "Pretraga proizvoda",
-      "LOGOUT": "Odjava",
-      "MY_ORDERS": "Moje narudžbe"
-    },
-    "ORDERS": {
-      "TITLE": "Moje narudžbe",
-      "NEW_ORDER": "Nova kupovina",
-      "EMPTY_TITLE": "Još nemate narudžbi",
-      "EMPTY_TEXT": "Kad naručite proizvode, narudžbe će se pojaviti ovdje.",
-      "START_SHOPPING": "Započnite kupovinu"
-    },
-    "ORDER_DETAILS": {
-      "TITLE": "Narudžba {{reference}}",
-      "BACK": "Nazad na narudžbe"
-    }
   },
   "ADMIN_PANEL": {
     "TITLE": "Admin Panel",
@@ -224,8 +91,6 @@
       "CATALOG": "KATALOG",
       "CATEGORIES": "Kategorije Proizvoda",
       "PRODUCTS": "Proizvodi",
-      "ORDERS_SECTION": "NARUDŽBE",
-      "ORDERS": "Pregled Narudžbi",
       "SYSTEM": "SISTEM",
       "SETTINGS": "Postavke",
       "MY_PROFILE": "Moj profil",
@@ -489,100 +354,6 @@
       "DELETED": "Slika je obrisana.",
       "DELETE_TITLE": "Brisanje slike",
       "DELETE_MESSAGE": "Da li ste sigurni da želite obrisati sliku proizvoda?"
-    }
-  },
-  "ORDERS": {
-    "TITLE": "Narudžbe",
-    "FILTER_STATUS": "Filtriraj po Statusu",
-    "ALL_STATUSES": "Svi Statusi",
-    "SEARCH_PLACEHOLDER": "Pretraži narudžbe...",
-    "SEARCH_INPUT_PLACEHOLDER": "Broj narudžbe, ime kupca, adresa...",
-    "SEARCH_MIN_LENGTH": "Unesite najmanje 3 znaka za pretragu",
-    "CLEAR_FILTERS": "Očisti Filtere",
-    "LOADING": "Učitavanje narudžbi...",
-    "RETRY": "Pokušaj Ponovo",
-    "ERROR_TITLE": "Greška pri Učitavanju Narudžbi",
-    "NO_DATA": "Nema narudžbi",
-    "NO_DATA_FILTER": "Nema narudžbi koje odgovaraju filterima",
-    "STATUS": {
-      "DRAFT": "Nacrt",
-      "CONFIRMED": "Potvrđena",
-      "PAID": "Plaćena",
-      "COMPLETED": "Završena",
-      "CANCELLED": "Otkazana",
-      "UNKNOWN": "Nepoznato"
-    },
-    "STATUS_DESCRIPTION": {
-      "DRAFT": "Narudžba kreirana ali nije potvrđena",
-      "CONFIRMED": "Narudžba potvrđena i čeka plaćanje",
-      "PAID": "Plaćanje primljeno i narudžba se procesira",
-      "COMPLETED": "Narudžba isporučena",
-      "CANCELLED": "Narudžba otkazana"
-    },
-    "TABLE": {
-      "ORDER_NUMBER": "Broj Narudžbe",
-      "CUSTOMER": "Kupac",
-      "TOTAL_AMOUNT": "Ukupno",
-      "STATUS": "Status",
-      "ORDER_DATE": "Datum Narudžbe",
-      "PAID_DATE": "Datum Plaćanja",
-      "ACTIONS": "Akcije"
-    },
-    "ACTIONS": {
-      "VIEW_DETAILS": "Pogledaj Detalje",
-      "CHANGE_STATUS": "Promijeni Status",
-      "EDIT": "Uredi narudžbu"
-    },
-    "DETAILS": {
-      "TITLE": "Detalji Narudžbe",
-      "LOADING": "Učitavanje detalja narudžbe...",
-      "ORDERED_AT": "Naručeno",
-      "PAID_AT": "Plaćeno",
-      "CUSTOMER_INFO": "Informacije o Kupcu",
-      "CUSTOMER_NAME": "Ime",
-      "ADDRESS": "Adresa",
-      "CITY": "Grad",
-      "ORDER_ITEMS": "Stavke Narudžbe",
-      "PRODUCT": "Proizvod",
-      "QUANTITY": "Količina",
-      "UNIT_PRICE": "Jedinična Cijena",
-      "DISCOUNT": "Popust",
-      "TOTAL": "Ukupno",
-      "ORDER_TOTAL": "Ukupna Narudžba",
-      "NOTE": "Napomena",
-      "LOAD_ERROR": "Greška pri učitavanju detalja narudžbe."
-    },
-    "CHANGE_STATUS": {
-      "TITLE": "Promijeni Status Narudžbe",
-      "CURRENT_STATUS": "Trenutni Status",
-      "NEW_STATUS": "Novi Status",
-      "NO_TRANSITIONS": "Nema dostupnih prijelaza statusa za ovu narudžbu",
-      "CANCEL_WARNING": "Upozorenje: Otkazivanje narudžbe ne može se poništiti!"
-    },
-    "MESSAGES": {
-      "STATUS_UPDATED": "Status narudžbe uspješno ažuriran",
-      "CANNOT_CHANGE_STATUS": "Status ove narudžbe ne može se promijeniti",
-      "LOAD_ERROR": "Greška pri učitavanju narudžbi.",
-      "STATUS_UPDATE_ERROR": "Greška pri promjeni statusa narudžbe."
-    },
-    "EDIT": {
-      "TITLE": "Uredi narudžbu",
-      "PRODUCT": "Proizvod",
-      "PRODUCT_PLACEHOLDER": "Upišite naziv proizvoda...",
-      "PRODUCT_DISABLED": "onemogućen – ne može se naručiti",
-      "NO_PRODUCTS": "Nema proizvoda za ovu pretragu",
-      "ADD_ITEM": "Dodaj stavku",
-      "REMOVE_ITEM": "Ukloni stavku",
-      "LINE_TOTAL": "Iznos (procjena)",
-      "SERVER_TOTAL": "snimljeno: {{amount}}",
-      "AT_LEAST_ONE_ITEM": "Narudžba mora imati bar jednu stavku.",
-      "NOTE_LABEL": "Napomena (opciono)",
-      "PREVIEW_SUBTOTAL": "Međuzbir (procjena, bez popusta)",
-      "SERVER_ORDER_TOTAL": "Ukupno sa popustima (server, zadnje snimanje)",
-      "TOTALS_HINT": "Cijene, popuste i konačan iznos računa server pri snimanju; iznosi u formi su samo procjena.",
-      "SAVED": "Narudžba je sačuvana.",
-      "NOT_DRAFT": "Narudžba nije u statusu Nacrt i ne može se mijenjati.",
-      "BACK_TO_LIST": "Nazad na narudžbe"
     }
   },
   "EXCHANGE_RATES": {

@@ -7,7 +7,7 @@ namespace Market.Application.Abstractions.Caching;
 /// with a non-empty <c>ConnectionStrings:Redis</c> it runs on Redis, and handlers do not change.
 /// </para>
 /// <para>
-/// Example — cache the public catalog home page (GetCatalogHomeQueryHandler) for 5 minutes:
+/// Example — cache a catalog query result for 5 minutes:
 /// <code>
 /// var version = await catalogCacheVersion.GetVersionAsync(ct);
 /// var key = $"catalog:v{version}:home:c{categoryLimit}:p{productLimit}";

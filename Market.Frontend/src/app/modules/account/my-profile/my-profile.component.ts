@@ -33,7 +33,7 @@ interface ChangePasswordForm {
 }
 
 /**
- * "Moj profil" – ista stranica za admina (/admin/profile) i kupca (/client/profile).
+ * "Moj profil" – ista stranica za admina (/admin/profile) i osoblje (/pos/profile).
  * Deklarisana je u AccountModule (vidi account-module.ts).
  *
  * PRIMJER: dvije nezavisne forme na jednoj stranici.
