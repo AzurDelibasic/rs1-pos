@@ -99,6 +99,7 @@
       "VENUE": "VENUE",
       "REGIONS": "Regions",
       "TABLES": "Tables",
+      "CASH_REGISTERS": "Cash registers",
       "POS": "POS"
     }
   },
@@ -253,6 +254,50 @@
       "ERROR_LOAD": "Error loading the table.",
       "ERROR_LOAD_LIST": "Error loading tables.",
       "ERROR_LOAD_REGIONS": "Error loading regions."
+    }
+  },
+  "CASH_REGISTERS": {
+    "TITLE": "Cash registers",
+    "SEARCH_PLACEHOLDER": "Search cash registers",
+    "SEARCH_INPUT_PLACEHOLDER": "Enter cash register name...",
+    "ONLY_ACTIVE": "Only active",
+    "NEW_CASH_REGISTER": "New cash register",
+    "LOADING": "Loading cash registers...",
+    "NO_DATA": "No cash registers to display",
+    "NO_DATA_FILTER": "No results found for search",
+    "TABLE": {
+      "NAME": "Name",
+      "STATUS": "Status",
+      "ACTIVE": "Active",
+      "INACTIVE": "Inactive",
+      "ACTIONS": "Actions"
+    },
+    "ACTIONS": {
+      "EDIT_TOOLTIP": "Edit cash register",
+      "DELETE_TOOLTIP": "Delete cash register"
+    },
+    "FORM": {
+      "NAME": "Cash register name",
+      "NAME_PLACEHOLDER": "e.g. Register 1 - Main hall",
+      "IS_ACTIVE": "Active",
+      "LOADING": "Loading...",
+      "CANCEL": "Cancel",
+      "SAVE": "Save",
+      "UPDATE": "Update",
+      "CREATE_TITLE": "New cash register",
+      "EDIT_TITLE": "Edit cash register"
+    },
+    "DIALOGS": {
+      "DELETE_MESSAGE": "Are you sure you want to delete cash register \"{{name}}\"?",
+      "SUCCESS_CREATE": "Cash register created successfully.",
+      "SUCCESS_UPDATE": "Cash register updated successfully.",
+      "SUCCESS_DELETE": "Cash register deleted successfully.",
+      "SUCCESS_ACTIVATE": "Cash register \"{{name}}\" has been activated.",
+      "SUCCESS_DEACTIVATE": "Cash register \"{{name}}\" has been deactivated.",
+      "ERROR_DELETE": "Error deleting cash register.",
+      "ERROR_TOGGLE": "Error changing status of cash register \"{{name}}\".",
+      "ERROR_LOAD": "Error loading the cash register.",
+      "ERROR_LOAD_LIST": "Error loading cash registers."
     }
   },
   "POS": {

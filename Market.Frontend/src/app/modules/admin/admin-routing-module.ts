@@ -11,6 +11,7 @@ import {AdminSettingsComponent} from './admin-settings/admin-settings.component'
 import {ExchangeRatesComponent} from './finance/exchange-rates/exchange-rates.component';
 import {RegionsComponent} from './venue/regions/regions.component';
 import {TablesComponent} from './venue/tables/tables.component';
+import {CashRegistersComponent} from './shifts/cash-registers/cash-registers.component';
 
 const routes: Routes = [
   {
@@ -44,6 +45,10 @@ const routes: Routes = [
       {
         path: 'tables',
         component: TablesComponent,
+      },
+      {
+        path: 'cash-registers',
+        component: CashRegistersComponent,
       },
 
       // FINANCE

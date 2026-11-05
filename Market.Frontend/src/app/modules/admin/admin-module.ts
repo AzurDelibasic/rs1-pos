@@ -18,6 +18,8 @@ import { RegionUpsertComponent } from './venue/regions/region-upsert/region-upse
 import { RegionsComponent } from './venue/regions/regions.component';
 import { TableUpsertComponent } from './venue/tables/table-upsert/table-upsert.component';
 import { TablesComponent } from './venue/tables/tables.component';
+import { CashRegisterUpsertComponent } from './shifts/cash-registers/cash-register-upsert/cash-register-upsert.component';
+import { CashRegistersComponent } from './shifts/cash-registers/cash-registers.component';
 
 
 @NgModule({
@@ -35,6 +37,8 @@ import { TablesComponent } from './venue/tables/tables.component';
     RegionsComponent,
     TableUpsertComponent,
     TablesComponent,
+    CashRegisterUpsertComponent,
+    CashRegistersComponent,
   ],
   imports: [
     AdminRoutingModule,

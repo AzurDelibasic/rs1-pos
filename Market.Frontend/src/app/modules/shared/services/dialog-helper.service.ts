@@ -260,6 +260,36 @@ export class DialogHelperService {
     }
   };
 
+  cashRegister = {
+    confirmDelete: (cashRegisterName: string) => {
+      return this.confirmDelete(
+        cashRegisterName,
+        'CASH_REGISTERS.DIALOGS.DELETE_MESSAGE'
+      );
+    },
+
+    showCreateSuccess: () => {
+      return this.showSuccess(
+        'DIALOGS.TITLES.SUCCESS',
+        'CASH_REGISTERS.DIALOGS.SUCCESS_CREATE'
+      );
+    },
+
+    showUpdateSuccess: () => {
+      return this.showSuccess(
+        'DIALOGS.TITLES.SUCCESS',
+        'CASH_REGISTERS.DIALOGS.SUCCESS_UPDATE'
+      );
+    },
+
+    showDeleteSuccess: () => {
+      return this.showSuccess(
+        'DIALOGS.TITLES.SUCCESS',
+        'CASH_REGISTERS.DIALOGS.SUCCESS_DELETE'
+      );
+    }
+  };
+
   table = {
     confirmDelete: (tableLabel: string) => {
       return this.confirmDelete(
