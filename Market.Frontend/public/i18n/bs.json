@@ -99,6 +99,7 @@
       "VENUE": "OBJEKAT",
       "REGIONS": "Regije",
       "TABLES": "Stolovi",
+      "CASH_REGISTERS": "Kase",
       "POS": "Kasa (POS)"
     }
   },
@@ -253,6 +254,50 @@
       "ERROR_LOAD": "Greška pri učitavanju stola.",
       "ERROR_LOAD_LIST": "Greška pri učitavanju stolova.",
       "ERROR_LOAD_REGIONS": "Greška pri učitavanju regija."
+    }
+  },
+  "CASH_REGISTERS": {
+    "TITLE": "Kase",
+    "SEARCH_PLACEHOLDER": "Pretraži kase",
+    "SEARCH_INPUT_PLACEHOLDER": "Unesite naziv kase...",
+    "ONLY_ACTIVE": "Samo aktivne",
+    "NEW_CASH_REGISTER": "Nova kasa",
+    "LOADING": "Učitavanje kasa...",
+    "NO_DATA": "Nema kasa za prikaz",
+    "NO_DATA_FILTER": "Nema rezultata za pretragu",
+    "TABLE": {
+      "NAME": "Naziv",
+      "STATUS": "Status",
+      "ACTIVE": "Aktivna",
+      "INACTIVE": "Neaktivna",
+      "ACTIONS": "Akcije"
+    },
+    "ACTIONS": {
+      "EDIT_TOOLTIP": "Uredi kasu",
+      "DELETE_TOOLTIP": "Obriši kasu"
+    },
+    "FORM": {
+      "NAME": "Naziv kase",
+      "NAME_PLACEHOLDER": "npr. Kasa 1 - Sala",
+      "IS_ACTIVE": "Aktivna",
+      "LOADING": "Učitavanje...",
+      "CANCEL": "Otkaži",
+      "SAVE": "Sačuvaj",
+      "UPDATE": "Ažuriraj",
+      "CREATE_TITLE": "Nova kasa",
+      "EDIT_TITLE": "Uredi kasu"
+    },
+    "DIALOGS": {
+      "DELETE_MESSAGE": "Da li ste sigurni da želite obrisati kasu \"{{name}}\"?",
+      "SUCCESS_CREATE": "Kasa uspješno kreirana.",
+      "SUCCESS_UPDATE": "Kasa uspješno ažurirana.",
+      "SUCCESS_DELETE": "Kasa uspješno obrisana.",
+      "SUCCESS_ACTIVATE": "Kasa \"{{name}}\" je aktivirana.",
+      "SUCCESS_DEACTIVATE": "Kasa \"{{name}}\" je deaktivirana.",
+      "ERROR_DELETE": "Greška pri brisanju kase.",
+      "ERROR_TOGGLE": "Greška pri promjeni statusa kase \"{{name}}\".",
+      "ERROR_LOAD": "Greška pri učitavanju kase.",
+      "ERROR_LOAD_LIST": "Greška pri učitavanju kasa."
     }
   },
   "POS": {

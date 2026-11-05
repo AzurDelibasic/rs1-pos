@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Market.Domain.Entities.Catalog;
 using Market.Domain.Entities.Finance;
 using Market.Domain.Entities.Identity;
+using Market.Domain.Entities.Shifts;
 using Market.Domain.Entities.Venue;
 
 namespace Market.Infrastructure.Database.Seeders;
@@ -25,6 +26,7 @@ public static class DynamicDataSeeder
         await SeedExchangeRatesAsync(context);
         await SeedRegionsAsync(context);
         await SeedTablesAsync(context);
+        await SeedCashRegistersAsync(context);
     }
 
     private static async Task SeedProductCategoriesAsync(DatabaseContext context)
@@ -501,5 +503,20 @@ public static class DynamicDataSeeder
         await context.SaveChangesAsync();
 
         Console.WriteLine("Dynamic seed: tables added.");
+    }
+
+    private static async Task SeedCashRegistersAsync(DatabaseContext context)
+    {
+        if (await context.CashRegisters.AnyAsync())
+            return;
+
+        context.CashRegisters.AddRange(
+            new CashRegisterEntity { Name = "Kasa 1 - Sala", IsActive = true },
+            new CashRegisterEntity { Name = "Kasa 2 - Šank", IsActive = true },
+            new CashRegisterEntity { Name = "Kasa 3 - Terasa", IsActive = false });
+
+        await context.SaveChangesAsync();
+
+        Console.WriteLine("Dynamic seed: cash registers added.");
     }
 }
