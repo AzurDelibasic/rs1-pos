@@ -100,6 +100,7 @@
       "REGIONS": "Regions",
       "TABLES": "Tables",
       "CASH_REGISTERS": "Cash registers",
+      "SHIFTS": "Shifts",
       "POS": "POS"
     }
   },
@@ -300,11 +301,90 @@
       "ERROR_LOAD_LIST": "Error loading cash registers."
     }
   },
+  "SHIFTS": {
+    "TITLE": "Shifts",
+    "SEARCH_PLACEHOLDER": "Search by waiter",
+    "SEARCH_INPUT_PLACEHOLDER": "Enter first or last name...",
+    "CASH_REGISTER_FILTER": "Cash register",
+    "ALL_CASH_REGISTERS": "All cash registers",
+    "STATUS_FILTER": "Status",
+    "ALL_STATUSES": "All statuses",
+    "DATE_FROM": "Date from",
+    "DATE_TO": "Date to",
+    "LOADING": "Loading shifts...",
+    "NO_DATA": "No shifts to display",
+    "NO_DATA_FILTER": "No shifts for the selected filters",
+    "STATUS": {
+      "OPEN": "Open",
+      "CLOSED": "Closed"
+    },
+    "TABLE": {
+      "OPENED_AT": "Opened",
+      "CLOSED_AT": "Closed",
+      "CASH_REGISTER": "Cash register",
+      "USER": "Waiter",
+      "OPENING_CASH": "Opening cash",
+      "EXPECTED_CASH": "Expected",
+      "COUNTED_CASH": "Counted",
+      "DIFFERENCE": "Difference",
+      "STATUS": "Status",
+      "ACTIONS": "Actions"
+    },
+    "ACTIONS": {
+      "CLOSE_TOOLTIP": "Close shift"
+    },
+    "CURRENT": {
+      "LABEL": "Shift:",
+      "OPENED_AT": "since",
+      "OPENING_CASH": "opening cash",
+      "CLOSE_BUTTON": "Close shift",
+      "OPEN_BUTTON": "Open shift",
+      "NO_SHIFT_TITLE": "You have no open shift",
+      "NO_SHIFT_TEXT": "Open a shift on a cash register to see the floor plan and work with orders."
+    },
+    "ACTIVE": {
+      "TITLE": "Active shifts",
+      "NO_DATA": "There are no open shifts at the moment."
+    },
+    "OPEN_FORM": {
+      "TITLE": "Open shift",
+      "WAITER": "Waiter",
+      "HAS_OPEN_SHIFT": "has an open shift",
+      "CASH_REGISTER": "Cash register",
+      "NO_CASH_REGISTERS": "There are no active cash registers.",
+      "OPENING_CASH": "Opening cash",
+      "OPENING_CASH_HINT": "Cash in the register at the start of the shift",
+      "CANCEL": "Cancel",
+      "SAVE": "Open shift"
+    },
+    "CLOSE_FORM": {
+      "TITLE": "Close shift",
+      "CASH_REGISTER": "Cash register",
+      "USER": "Waiter",
+      "OPENED_AT": "Opened",
+      "OPENING_CASH": "Opening cash",
+      "EXPECTED_CASH": "Expected cash",
+      "COUNTED_CASH": "Counted cash",
+      "COUNTED_CASH_HINT": "Cash you counted in the register",
+      "DIFFERENCE": "Difference",
+      "CANCEL": "Cancel",
+      "SAVE": "Close shift"
+    },
+    "DIALOGS": {
+      "SUCCESS_OPEN": "Shift opened.",
+      "SUCCESS_CLOSE": "Shift closed.",
+      "ERROR_LOAD": "Error loading the shift.",
+      "ERROR_LOAD_LIST": "Error loading shifts.",
+      "ERROR_LOAD_CASH_REGISTERS": "Error loading cash registers.",
+      "ERROR_LOAD_WAITERS": "Error loading waiters."
+    }
+  },
   "POS": {
     "MENU": {
       "SECTION": "POS",
       "FLOOR_PLAN": "Floor plan",
       "ADMIN_PANEL": "Admin panel",
+      "MANAGEMENT": "Management",
       "MY_PROFILE": "My profile",
       "LOGOUT": "Logout"
     },

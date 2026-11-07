@@ -27,6 +27,7 @@ public static class DynamicDataSeeder
         await SeedRegionsAsync(context);
         await SeedTablesAsync(context);
         await SeedCashRegistersAsync(context);
+        await SeedShiftsAsync(context);
     }
 
     private static async Task SeedProductCategoriesAsync(DatabaseContext context)
@@ -81,91 +82,45 @@ public static class DynamicDataSeeder
 
         var hasher = new PasswordHasher<MarketUserEntity>();
 
-        var admin = new MarketUserEntity
-        {
-            Firstname = "Admin",
-            Lastname = "Market",
-            Email = "admin@market.local",
-            PasswordHash = hasher.HashPassword(null!, "Admin123!"),
-            Address = "Maršala Tita 1",
-            City = "Sarajevo",
-            IsAdmin = true,
-            IsManager = false,
-            IsEmployee = false,
-            IsEnabled = true,
-            CreatedAtUtc = DateTime.UtcNow
-        };
-
-        var manager = new MarketUserEntity
-        {
-            Firstname = "Manager",
-            Lastname = "Market",
-            Email = "manager@market.local",
-            PasswordHash = hasher.HashPassword(null!, "Manager123!"),
-            Address = "Ferhadija 12",
-            City = "Sarajevo",
-            IsAdmin = false,
-            IsManager = true,
-            IsEmployee = false,
-            IsEnabled = true,
-            CreatedAtUtc = DateTime.UtcNow
-        };
-
-        var employee = new MarketUserEntity
-        {
-            Firstname = "Employee",
-            Lastname = "Market",
-            Email = "employee@market.local",
-            PasswordHash = hasher.HashPassword(null!, "Employee123!"),
-            Address = "Kralja Tvrtka 5",
-            City = "Zenica",
-            IsAdmin = false,
-            IsManager = false,
-            IsEmployee = true,
-            IsEnabled = true,
-            CreatedAtUtc = DateTime.UtcNow
-        };
-
-        var dummyForSwagger = new MarketUserEntity
-        {
-            Firstname = "Swagger",
-            Lastname = "Demo",
-            Email = "string",
-            PasswordHash = hasher.HashPassword(null!, "string"),
-            Address = "Zmaja od Bosne 8",
-            City = "Sarajevo",
-            IsAdmin = false,
-            IsManager = false,
-            IsEmployee = true,
-            IsEnabled = true,
-            CreatedAtUtc = DateTime.UtcNow
-        };
-
-        var dummyForTests = new MarketUserEntity
-        {
-            Firstname = "Test",
-            Lastname = "User",
-            Email = "test",
-            PasswordHash = hasher.HashPassword(null!, "test123"),
-            Address = "Titova 3",
-            City = "Tuzla",
-            IsAdmin = false,
-            IsManager = false,
-            IsEmployee = true,
-            IsEnabled = true,
-            CreatedAtUtc = DateTime.UtcNow
-        };
+        const string password = "Test123!";
 
         context.Users.AddRange(
-            admin,
-            manager,
-            employee,
-            dummyForSwagger,
-            dummyForTests
+            CreateUser(hasher, "Admin", "RS1", "admin@rs1.ba", password, isAdmin: true),
+            CreateUser(hasher, "Menadžer", "Jedan", "manager1@rs1.ba", password, isManager: true),
+            CreateUser(hasher, "Menadžer", "Dva", "manager2@rs1.ba", password, isManager: true),
+            CreateUser(hasher, "Konobar", "Jedan", "konobar1@rs1.ba", password, isEmployee: true),
+            CreateUser(hasher, "Konobar", "Dva", "konobar2@rs1.ba", password, isEmployee: true),
+            CreateUser(hasher, "Konobar", "Tri", "konobar3@rs1.ba", password, isEmployee: true),
+            CreateUser(hasher, "Swagger", "Demo", "string", "string", isAdmin: true),
+            CreateUser(hasher, "Test", "User", "test", "test123", isAdmin: true)
         );
 
         await context.SaveChangesAsync();
-        Console.WriteLine("✅ Dynamic seed: demo users added.");
+        Console.WriteLine("Dynamic seed: users added.");
+    }
+
+    private static MarketUserEntity CreateUser(
+        PasswordHasher<MarketUserEntity> hasher,
+        string firstname,
+        string lastname,
+        string email,
+        string password,
+        bool isAdmin = false,
+        bool isManager = false,
+        bool isEmployee = false)
+    {
+        return new MarketUserEntity
+        {
+            Firstname = firstname,
+            Lastname = lastname,
+            Email = email,
+            PasswordHash = hasher.HashPassword(null!, password),
+            IsAdmin = isAdmin,
+            IsManager = isManager,
+            IsEmployee = isEmployee,
+            IsEnabled = true,
+            CreatedAtUtc = DateTime.UtcNow
+        };
     }
 
     /// <summary>
@@ -518,5 +473,49 @@ public static class DynamicDataSeeder
         await context.SaveChangesAsync();
 
         Console.WriteLine("Dynamic seed: cash registers added.");
+    }
+
+    private static async Task SeedShiftsAsync(DatabaseContext context)
+    {
+        if (await context.Shifts.AnyAsync())
+            return;
+
+        var employee = await context.Users.FirstOrDefaultAsync(u => u.IsEmployee);
+        var cashRegister = await context.CashRegisters.FirstOrDefaultAsync(c => c.IsActive);
+
+        if (employee is null || cashRegister is null)
+            return;
+
+        var today = DateTime.UtcNow.Date;
+
+        context.Shifts.AddRange(
+            new ShiftEntity
+            {
+                CashRegisterId = cashRegister.Id,
+                UserId = employee.Id,
+                OpenedAtUtc = today.AddDays(-2).AddHours(7),
+                ClosedAtUtc = today.AddDays(-2).AddHours(15),
+                OpeningCash = 150m,
+                ExpectedCash = 150m,
+                CountedCash = 145m,
+                Difference = -5m,
+                Status = ShiftStatusType.Closed
+            },
+            new ShiftEntity
+            {
+                CashRegisterId = cashRegister.Id,
+                UserId = employee.Id,
+                OpenedAtUtc = today.AddDays(-1).AddHours(7),
+                ClosedAtUtc = today.AddDays(-1).AddHours(15),
+                OpeningCash = 200m,
+                ExpectedCash = 200m,
+                CountedCash = 200m,
+                Difference = 0m,
+                Status = ShiftStatusType.Closed
+            });
+
+        await context.SaveChangesAsync();
+
+        Console.WriteLine("Dynamic seed: shifts added.");
     }
 }

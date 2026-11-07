@@ -1,0 +1,78 @@
+<h2 mat-dialog-title>
+  {{ 'SHIFTS.CLOSE_FORM.TITLE' | translate }}
+</h2>
+
+<mat-dialog-content>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" id="close-shift-form">
+    @if (errorMessage) {
+      <div class="error-banner">
+        <mat-icon>error</mat-icon>
+        <span>{{ errorMessage }}</span>
+      </div>
+    }
+
+    <div class="shift-summary">
+      <div class="summary-row">
+        <span>{{ 'SHIFTS.CLOSE_FORM.CASH_REGISTER' | translate }}</span>
+        <strong>{{ data.cashRegisterName }}</strong>
+      </div>
+      @if (data.userFullName) {
+        <div class="summary-row">
+          <span>{{ 'SHIFTS.CLOSE_FORM.USER' | translate }}</span>
+          <strong>{{ data.userFullName }}</strong>
+        </div>
+      }
+      <div class="summary-row">
+        <span>{{ 'SHIFTS.CLOSE_FORM.OPENED_AT' | translate }}</span>
+        <strong>{{ data.openedAtUtc | date: 'dd.MM.yyyy HH:mm' }}</strong>
+      </div>
+      <div class="summary-row">
+        <span>{{ 'SHIFTS.CLOSE_FORM.OPENING_CASH' | translate }}</span>
+        <strong>{{ data.openingCash | number: '1.2-2' }} KM</strong>
+      </div>
+      <div class="summary-row">
+        <span>{{ 'SHIFTS.CLOSE_FORM.EXPECTED_CASH' | translate }}</span>
+        <strong>{{ data.expectedCash | number: '1.2-2' }} KM</strong>
+      </div>
+    </div>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>{{ 'SHIFTS.CLOSE_FORM.COUNTED_CASH' | translate }}</mat-label>
+      <input matInput type="number" min="0" step="0.01" formControlName="countedCash" autocomplete="off" />
+      <span matTextSuffix>&nbsp;KM</span>
+      <mat-error><app-fit-field-error [control]="form.controls.countedCash" /></mat-error>
+      <mat-hint>{{ 'SHIFTS.CLOSE_FORM.COUNTED_CASH_HINT' | translate }}</mat-hint>
+    </mat-form-field>
+
+    @if (difference !== null) {
+      <div class="shift-summary">
+        <div class="summary-row difference">
+          <span>{{ 'SHIFTS.CLOSE_FORM.DIFFERENCE' | translate }}</span>
+          <strong [class.negative]="difference < 0">{{ difference | number: '1.2-2' }} KM</strong>
+        </div>
+      </div>
+    }
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button type="button" (click)="onCancel()" [disabled]="isLoading">
+    <mat-icon>close</mat-icon>
+    {{ 'SHIFTS.CLOSE_FORM.CANCEL' | translate }}
+  </button>
+
+  <button
+    mat-raised-button
+    color="primary"
+    type="submit"
+    form="close-shift-form"
+    [disabled]="form.invalid || isLoading"
+  >
+    @if (isLoading) {
+      <mat-spinner diameter="20"></mat-spinner>
+    } @else {
+      <mat-icon>lock</mat-icon>
+    }
+    {{ 'SHIFTS.CLOSE_FORM.SAVE' | translate }}
+  </button>
+</mat-dialog-actions>

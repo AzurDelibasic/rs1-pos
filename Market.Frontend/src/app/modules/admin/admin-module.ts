@@ -20,6 +20,7 @@ import { TableUpsertComponent } from './venue/tables/table-upsert/table-upsert.c
 import { TablesComponent } from './venue/tables/tables.component';
 import { CashRegisterUpsertComponent } from './shifts/cash-registers/cash-register-upsert/cash-register-upsert.component';
 import { CashRegistersComponent } from './shifts/cash-registers/cash-registers.component';
+import { ShiftsComponent } from './shifts/shifts/shifts.component';
 
 
 @NgModule({
@@ -39,6 +40,7 @@ import { CashRegistersComponent } from './shifts/cash-registers/cash-registers.c
     TablesComponent,
     CashRegisterUpsertComponent,
     CashRegistersComponent,
+    ShiftsComponent,
   ],
   imports: [
     AdminRoutingModule,

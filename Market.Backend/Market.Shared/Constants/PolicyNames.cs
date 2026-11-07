@@ -12,4 +12,6 @@ public static class PolicyNames
     public const string Admin = "Admin";
 
     public const string Staff = "Staff";
+
+    public const string Management = "Management";
 }

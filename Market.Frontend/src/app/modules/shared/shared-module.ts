@@ -13,6 +13,7 @@ import { FitFieldErrorComponent } from './components/fit-field-error/fit-field-e
 import { CurrencySelectorComponent } from './components/currency-selector/currency-selector.component';
 import { MoneyPipe } from './pipes/money.pipe';
 import { ApiUrlPipe } from './pipes/api-url.pipe';
+import { CloseShiftDialogComponent } from './components/close-shift-dialog/close-shift-dialog.component';
 
 
 
@@ -25,7 +26,8 @@ import { ApiUrlPipe } from './pipes/api-url.pipe';
     FitFieldErrorComponent,
     CurrencySelectorComponent,
     MoneyPipe,
-    ApiUrlPipe
+    ApiUrlPipe,
+    CloseShiftDialogComponent
   ],
   imports: [
     CommonModule,
@@ -50,6 +52,7 @@ import { ApiUrlPipe } from './pipes/api-url.pipe';
     CurrencySelectorComponent,
     MoneyPipe,
     ApiUrlPipe,
+    CloseShiftDialogComponent,
     materialModules
   ]
 })

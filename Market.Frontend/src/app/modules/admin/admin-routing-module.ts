@@ -11,7 +11,9 @@ import {AdminSettingsComponent} from './admin-settings/admin-settings.component'
 import {ExchangeRatesComponent} from './finance/exchange-rates/exchange-rates.component';
 import {RegionsComponent} from './venue/regions/regions.component';
 import {TablesComponent} from './venue/tables/tables.component';
+import {myAuthData, myAuthGuard} from '../../core/guards/my-auth-guard';
 import {CashRegistersComponent} from './shifts/cash-registers/cash-registers.component';
+import {ShiftsComponent} from './shifts/shifts/shifts.component';
 
 const routes: Routes = [
   {
@@ -21,20 +23,28 @@ const routes: Routes = [
       // PRODUCTS
       {
         path: 'products',
+        canActivate: [myAuthGuard],
+        data: myAuthData({ requireAdmin: true }),
         component: ProductsComponent,
       },
       {
         path: 'products/add',
+        canActivate: [myAuthGuard],
+        data: myAuthData({ requireAdmin: true }),
         component: ProductsAddComponent,
       },
       {
         path: 'products/:id/edit',
+        canActivate: [myAuthGuard],
+        data: myAuthData({ requireAdmin: true }),
         component: ProductsEditComponent,
       },
 
       // PRODUCT CATEGORIES
       {
         path: 'product-categories',
+        canActivate: [myAuthGuard],
+        data: myAuthData({ requireAdmin: true }),
         component: ProductCategoriesComponent,
       },
 
@@ -50,16 +60,24 @@ const routes: Routes = [
         path: 'cash-registers',
         component: CashRegistersComponent,
       },
+      {
+        path: 'shifts',
+        component: ShiftsComponent,
+      },
 
       // FINANCE
       {
         path: 'exchange-rates',
+        canActivate: [myAuthGuard],
+        data: myAuthData({ requireAdmin: true }),
         component: ExchangeRatesComponent,
       },
 
       // POSTAVKE APLIKACIJE (prazna stranica – ovdje idu postavke vaše aplikacije)
       {
         path: 'settings',
+        canActivate: [myAuthGuard],
+        data: myAuthData({ requireAdmin: true }),
         component: AdminSettingsComponent,
       },
 

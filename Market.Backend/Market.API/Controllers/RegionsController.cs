@@ -15,7 +15,7 @@ namespace Market.API.Controllers;
 public class RegionsController(ISender sender) : ControllerBase
 {
     [HttpPost]
-    [Authorize(Policy = PolicyNames.Admin)]
+    [Authorize(Policy = PolicyNames.Management)]
     public async Task<ActionResult<int>> Create(CreateRegionCommand command, CancellationToken ct)
     {
         int id = await sender.Send(command, ct);
@@ -23,7 +23,7 @@ public class RegionsController(ISender sender) : ControllerBase
     }
 
     [HttpPut("{id:int}")]
-    [Authorize(Policy = PolicyNames.Admin)]
+    [Authorize(Policy = PolicyNames.Management)]
     public async Task Update(int id, UpdateRegionCommand command, CancellationToken ct)
     {
         command.Id = id;
@@ -31,7 +31,7 @@ public class RegionsController(ISender sender) : ControllerBase
     }
 
     [HttpDelete("{id:int}")]
-    [Authorize(Policy = PolicyNames.Admin)]
+    [Authorize(Policy = PolicyNames.Management)]
     public async Task Delete(int id, CancellationToken ct)
     {
         await sender.Send(new DeleteRegionCommand { Id = id }, ct);
@@ -50,14 +50,14 @@ public class RegionsController(ISender sender) : ControllerBase
     }
 
     [HttpPut("{id:int}/activate")]
-    [Authorize(Policy = PolicyNames.Admin)]
+    [Authorize(Policy = PolicyNames.Management)]
     public async Task Activate(int id, CancellationToken ct)
     {
         await sender.Send(new ActivateRegionCommand { Id = id }, ct);
     }
 
     [HttpPut("{id:int}/deactivate")]
-    [Authorize(Policy = PolicyNames.Admin)]
+    [Authorize(Policy = PolicyNames.Management)]
     public async Task Deactivate(int id, CancellationToken ct)
     {
         await sender.Send(new DeactivateRegionCommand { Id = id }, ct);

@@ -5,8 +5,8 @@ public sealed class DeleteTableCommandHandler(IAppDbContext context, IAppCurrent
 {
     public async Task<Unit> Handle(DeleteTableCommand request, CancellationToken cancellationToken)
     {
-        if (!appCurrentUser.IsAdmin)
-            throw new MarketForbiddenException("Samo administrator može brisati stolove.");
+        if (!appCurrentUser.IsAdmin && !appCurrentUser.IsManager)
+            throw new MarketForbiddenException("Samo administrator i menadžer mogu brisati stolove.");
 
         var table = await context.Tables
             .FirstOrDefaultAsync(x => x.Id == request.Id, cancellationToken);

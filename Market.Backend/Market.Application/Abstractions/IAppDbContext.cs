@@ -20,6 +20,7 @@ public interface IAppDbContext
     DbSet<TableEntity> Tables { get; }
 
     DbSet<CashRegisterEntity> CashRegisters { get; }
+    DbSet<ShiftEntity> Shifts { get; }
 
     Task<int> SaveChangesAsync(CancellationToken ct);
 }
