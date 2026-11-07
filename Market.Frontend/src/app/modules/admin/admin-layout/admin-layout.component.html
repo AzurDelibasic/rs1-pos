@@ -55,6 +55,7 @@
 
     <!-- NAVIGATION MENU -->
     <mat-nav-list>
+      @if (auth.isAdmin()) {
       <!-- CATALOG SECTION -->
       <div class="nav-section-title">
         {{ 'ADMIN_PANEL.MENU.CATALOG' | translate }}
@@ -71,6 +72,7 @@
       </a>
 
       <mat-divider></mat-divider>
+      }
 
       <div class="nav-section-title">
         {{ 'ADMIN_PANEL.MENU.VENUE' | translate }}
@@ -91,6 +93,11 @@
         <span matListItemTitle>{{ 'ADMIN_PANEL.MENU.CASH_REGISTERS' | translate }}</span>
       </a>
 
+      <a mat-list-item routerLink="/admin/shifts" routerLinkActive="active">
+        <mat-icon matListItemIcon>schedule</mat-icon>
+        <span matListItemTitle>{{ 'ADMIN_PANEL.MENU.SHIFTS' | translate }}</span>
+      </a>
+
       <a mat-list-item routerLink="/pos">
         <mat-icon matListItemIcon>point_of_sale</mat-icon>
         <span matListItemTitle>{{ 'ADMIN_PANEL.MENU.POS' | translate }}</span>
@@ -103,6 +110,7 @@
         {{ 'ADMIN_PANEL.MENU.SYSTEM' | translate }}
       </div>
 
+      @if (auth.isAdmin()) {
       <a mat-list-item routerLink="/admin/exchange-rates" routerLinkActive="active">
         <mat-icon matListItemIcon>currency_exchange</mat-icon>
         <span matListItemTitle>{{ 'ADMIN_PANEL.MENU.EXCHANGE_RATES' | translate }}</span>
@@ -112,6 +120,7 @@
         <mat-icon matListItemIcon>settings</mat-icon>
         <span matListItemTitle>{{ 'ADMIN_PANEL.MENU.SETTINGS' | translate }}</span>
       </a>
+      }
 
       <a mat-list-item routerLink="/admin/profile" routerLinkActive="active">
         <mat-icon matListItemIcon>manage_accounts</mat-icon>

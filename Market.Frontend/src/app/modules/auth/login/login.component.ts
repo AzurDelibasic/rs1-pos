@@ -27,8 +27,8 @@ export class LoginComponent extends BaseComponent {
   // Seedani admin (Market.API DynamicDataSeeder) popunjen je samo u development buildu,
   // radi bržeg testiranja. U production/testing buildu polja su prazna.
   form = this.fb.group({
-    email: [environment.production ? '' : 'admin@market.local', [Validators.required, Validators.email]],
-    password: [environment.production ? '' : 'Admin123!', [Validators.required]],
+    email: [environment.production ? '' : 'admin@rs1.ba', [Validators.required, Validators.email]],
+    password: [environment.production ? '' : 'Test123!', [Validators.required]],
   });
 
   onSubmit(): void {

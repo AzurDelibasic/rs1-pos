@@ -55,14 +55,13 @@ Ako HTTPS certifikat ne radi, pokrenite backend s profilom `http` i u `src/envir
 
 | Email | Lozinka | Uloga |
 |---|---|---|
-| `admin@market.local` | `Admin123!` | administrator (`/admin`) |
-| `manager@market.local` | `Manager123!` | menadžer |
-| `employee@market.local` | `Employee123!` | uposlenik |
-| `nina.bijedic@email.com`, `iris.memic@email.com`, `azra.smajic@email.com` | `Customer123!` | kupci, vlasnici demo narudžbi |
-| `string` | `string` | za Swagger |
-| `test` | `test123` | za testove |
+| `admin@rs1.ba` | `Test123!` | administrator (`/admin`) |
+| `manager1@rs1.ba`, `manager2@rs1.ba` | `Test123!` | menadžer (`/pos`) |
+| `konobar1@rs1.ba`, `konobar2@rs1.ba`, `konobar3@rs1.ba` | `Test123!` | konobar (`/pos`) |
+| `string` | `string` | administrator, za Swagger |
+| `test` | `test123` | administrator, za testove |
 
-Administrator nakon prijave ide na `/admin`, svi ostali na `/client`. Novi kupac se može registrovati na `/auth/register` (odmah je prijavljen). Lozinka mora imati najmanje 8 znakova, bar jedno slovo i jednu cifru.
+Korisnici se kreiraju pri pokretanju aplikacije samo ako je tabela korisnika prazna. Administrator nakon prijave ide na `/admin`, a menadžeri i konobari na `/pos`.
 
 ## Okruženja (environments)
 

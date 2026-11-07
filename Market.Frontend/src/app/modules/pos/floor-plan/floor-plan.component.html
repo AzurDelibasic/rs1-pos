@@ -18,13 +18,84 @@
           }
         </div>
 
-        <button mat-raised-button color="primary" (click)="loadFloorPlan()" [disabled]="isLoading" class="add-button">
+        @if (shift || !isWaiter) {
+        <button mat-raised-button color="primary" (click)="onRefresh()" [disabled]="isLoading" class="add-button">
           <mat-icon>refresh</mat-icon>
           <span>{{ 'POS.FLOOR_PLAN.REFRESH' | translate }}</span>
         </button>
+        }
       </div>
     </div>
   </div>
+
+  @if (isShiftLoaded && shift) {
+  <div class="shift-bar">
+    <div class="shift-info">
+      <mat-icon>schedule</mat-icon>
+      <span class="shift-title">{{ 'SHIFTS.CURRENT.LABEL' | translate }}</span>
+      <span>{{ shift.cashRegisterName }}</span>
+      <span class="shift-separator">•</span>
+      <span>{{ 'SHIFTS.CURRENT.OPENED_AT' | translate }} {{ shift.openedAtUtc | date: 'dd.MM.yyyy HH:mm' }}</span>
+      <span class="shift-separator">•</span>
+      <span>{{ 'SHIFTS.CURRENT.OPENING_CASH' | translate }} {{ shift.openingCash | number: '1.2-2' }} KM</span>
+    </div>
+    <button mat-stroked-button color="warn" (click)="onCloseShift()" [disabled]="isLoading">
+      <mat-icon>lock</mat-icon>
+      {{ 'SHIFTS.CURRENT.CLOSE_BUTTON' | translate }}
+    </button>
+  </div>
+  }
+
+  @if (!isWaiter) {
+  <section class="open-shifts-card">
+    <div class="open-shifts-header">
+      <mat-icon>schedule</mat-icon>
+      <h2>{{ 'SHIFTS.ACTIVE.TITLE' | translate }}</h2>
+      <span class="region-count">{{ openShifts.length }}</span>
+      <button mat-raised-button color="primary" (click)="onOpenShift()">
+        <mat-icon>lock_open</mat-icon>
+        {{ 'SHIFTS.CURRENT.OPEN_BUTTON' | translate }}
+      </button>
+    </div>
+
+    @if (openShifts.length === 0) {
+    <p class="region-empty">{{ 'SHIFTS.ACTIVE.NO_DATA' | translate }}</p>
+    } @else {
+    <div class="open-shifts-list">
+      @for (openShift of openShifts; track openShift.id) {
+      <div class="open-shift-row">
+        <div class="shift-info">
+          <mat-icon>person</mat-icon>
+          <span class="shift-title">{{ openShift.userFullName }}</span>
+          <span class="shift-separator">•</span>
+          <span>{{ openShift.cashRegisterName }}</span>
+          <span class="shift-separator">•</span>
+          <span>{{ 'SHIFTS.CURRENT.OPENED_AT' | translate }} {{ openShift.openedAtUtc | date: 'dd.MM.yyyy HH:mm' }}</span>
+          <span class="shift-separator">•</span>
+          <span>{{ 'SHIFTS.CURRENT.OPENING_CASH' | translate }} {{ openShift.openingCash | number: '1.2-2' }} KM</span>
+        </div>
+        <button mat-stroked-button color="warn" (click)="onCloseOpenShift(openShift)">
+          <mat-icon>lock</mat-icon>
+          {{ 'SHIFTS.CURRENT.CLOSE_BUTTON' | translate }}
+        </button>
+      </div>
+      }
+    </div>
+    }
+  </section>
+  }
+
+  @if (isShiftLoaded && !shift && !isLoading) {
+  <div class="no-shift-card">
+    <mat-icon>lock_clock</mat-icon>
+    <h2>{{ 'SHIFTS.CURRENT.NO_SHIFT_TITLE' | translate }}</h2>
+    <p>{{ 'SHIFTS.CURRENT.NO_SHIFT_TEXT' | translate }}</p>
+    <button mat-raised-button color="primary" (click)="onOpenShift()">
+      <mat-icon>lock_open</mat-icon>
+      {{ 'SHIFTS.CURRENT.OPEN_BUTTON' | translate }}
+    </button>
+  </div>
+  }
 
   @if (isLoading) {
   <div class="loading-container">
@@ -40,7 +111,7 @@
   </div>
   }
 
-  @if (!isLoading && !errorMessage) {
+  @if (!isLoading && !errorMessage && (shift || !isWaiter)) {
     @if (regions.length === 0) {
     <div class="no-data-content">
       <mat-icon>inbox</mat-icon>

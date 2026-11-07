@@ -1,3 +1,5 @@
+using Market.Domain.Entities.Shifts;
+
 namespace Market.Application.Modules.Shifts.CashRegisters.Commands.Update;
 
 public sealed class UpdateCashRegisterCommandHandler(IAppDbContext context)
@@ -18,6 +20,16 @@ public sealed class UpdateCashRegisterCommandHandler(IAppDbContext context)
 
         if (exists)
             throw new MarketConflictException($"Kasa sa nazivom {name} već postoji.");
+
+        if (cashRegister.IsActive && !request.IsActive)
+        {
+            var hasOpenShift = await context.Shifts
+                .AnyAsync(s => s.CashRegisterId == cashRegister.Id && s.Status == ShiftStatusType.Open, cancellationToken);
+
+            if (hasOpenShift)
+                throw new MarketBusinessRuleException("cashRegister.deactivate.blocked.openShift",
+                    $"Kasa {cashRegister.Name} se ne može deaktivirati jer je na njoj otvorena smjena.");
+        }
 
         cashRegister.Name = name;
         cashRegister.IsActive = request.IsActive;

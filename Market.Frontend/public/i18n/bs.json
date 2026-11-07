@@ -100,6 +100,7 @@
       "REGIONS": "Regije",
       "TABLES": "Stolovi",
       "CASH_REGISTERS": "Kase",
+      "SHIFTS": "Smjene",
       "POS": "Kasa (POS)"
     }
   },
@@ -300,11 +301,90 @@
       "ERROR_LOAD_LIST": "Greška pri učitavanju kasa."
     }
   },
+  "SHIFTS": {
+    "TITLE": "Smjene",
+    "SEARCH_PLACEHOLDER": "Pretraži po konobaru",
+    "SEARCH_INPUT_PLACEHOLDER": "Unesite ime ili prezime...",
+    "CASH_REGISTER_FILTER": "Kasa",
+    "ALL_CASH_REGISTERS": "Sve kase",
+    "STATUS_FILTER": "Status",
+    "ALL_STATUSES": "Svi statusi",
+    "DATE_FROM": "Datum od",
+    "DATE_TO": "Datum do",
+    "LOADING": "Učitavanje smjena...",
+    "NO_DATA": "Nema smjena za prikaz",
+    "NO_DATA_FILTER": "Nema smjena za izabrane filtere",
+    "STATUS": {
+      "OPEN": "Otvorena",
+      "CLOSED": "Zatvorena"
+    },
+    "TABLE": {
+      "OPENED_AT": "Otvorena",
+      "CLOSED_AT": "Zatvorena",
+      "CASH_REGISTER": "Kasa",
+      "USER": "Konobar",
+      "OPENING_CASH": "Početno stanje",
+      "EXPECTED_CASH": "Očekivano",
+      "COUNTED_CASH": "Izbrojano",
+      "DIFFERENCE": "Razlika",
+      "STATUS": "Status",
+      "ACTIONS": "Akcije"
+    },
+    "ACTIONS": {
+      "CLOSE_TOOLTIP": "Zatvori smjenu"
+    },
+    "CURRENT": {
+      "LABEL": "Smjena:",
+      "OPENED_AT": "od",
+      "OPENING_CASH": "početno stanje",
+      "CLOSE_BUTTON": "Zatvori smjenu",
+      "OPEN_BUTTON": "Otvori smjenu",
+      "NO_SHIFT_TITLE": "Nemate otvorenu smjenu",
+      "NO_SHIFT_TEXT": "Otvorite smjenu na kasi da biste vidjeli raspored stolova i radili sa narudžbama."
+    },
+    "ACTIVE": {
+      "TITLE": "Aktivne smjene",
+      "NO_DATA": "Trenutno nema otvorenih smjena."
+    },
+    "OPEN_FORM": {
+      "TITLE": "Otvaranje smjene",
+      "WAITER": "Konobar",
+      "HAS_OPEN_SHIFT": "ima otvorenu smjenu",
+      "CASH_REGISTER": "Kasa",
+      "NO_CASH_REGISTERS": "Nema aktivnih kasa.",
+      "OPENING_CASH": "Početno stanje gotovine",
+      "OPENING_CASH_HINT": "Gotovina u kasi na početku smjene",
+      "CANCEL": "Otkaži",
+      "SAVE": "Otvori smjenu"
+    },
+    "CLOSE_FORM": {
+      "TITLE": "Zatvaranje smjene",
+      "CASH_REGISTER": "Kasa",
+      "USER": "Konobar",
+      "OPENED_AT": "Otvorena",
+      "OPENING_CASH": "Početno stanje",
+      "EXPECTED_CASH": "Očekivano stanje",
+      "COUNTED_CASH": "Izbrojano stanje",
+      "COUNTED_CASH_HINT": "Gotovina koju ste izbrojali u kasi",
+      "DIFFERENCE": "Razlika",
+      "CANCEL": "Otkaži",
+      "SAVE": "Zatvori smjenu"
+    },
+    "DIALOGS": {
+      "SUCCESS_OPEN": "Smjena je otvorena.",
+      "SUCCESS_CLOSE": "Smjena je zatvorena.",
+      "ERROR_LOAD": "Greška pri učitavanju smjene.",
+      "ERROR_LOAD_LIST": "Greška pri učitavanju smjena.",
+      "ERROR_LOAD_CASH_REGISTERS": "Greška pri učitavanju kasa.",
+      "ERROR_LOAD_WAITERS": "Greška pri učitavanju konobara."
+    }
+  },
   "POS": {
     "MENU": {
       "SECTION": "KASA",
       "FLOOR_PLAN": "Raspored stolova",
       "ADMIN_PANEL": "Admin panel",
+      "MANAGEMENT": "Upravljanje",
       "MY_PROFILE": "Moj profil",
       "LOGOUT": "Odjava"
     },

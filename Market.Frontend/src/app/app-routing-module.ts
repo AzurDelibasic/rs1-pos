@@ -6,7 +6,7 @@ const routes: Routes = [
   {
     path: 'admin',
     canActivate: [myAuthGuard],
-    data: myAuthData({ requireAuth: true, requireAdmin: true }),
+    data: myAuthData({ requireManagement: true }),
     loadChildren: () =>
       import('./modules/admin/admin-module').then(m => m.AdminModule)
   },

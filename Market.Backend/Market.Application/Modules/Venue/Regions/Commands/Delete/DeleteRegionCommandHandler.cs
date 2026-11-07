@@ -5,8 +5,8 @@ public sealed class DeleteRegionCommandHandler(IAppDbContext context, IAppCurren
 {
     public async Task<Unit> Handle(DeleteRegionCommand request, CancellationToken cancellationToken)
     {
-        if (!appCurrentUser.IsAdmin)
-            throw new MarketForbiddenException("Samo administrator može brisati regije.");
+        if (!appCurrentUser.IsAdmin && !appCurrentUser.IsManager)
+            throw new MarketForbiddenException("Samo administrator i menadžer mogu brisati regije.");
 
         var region = await context.Regions
             .FirstOrDefaultAsync(x => x.Id == request.Id, cancellationToken);

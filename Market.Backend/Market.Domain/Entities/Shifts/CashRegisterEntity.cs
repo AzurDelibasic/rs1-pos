@@ -8,6 +8,8 @@ public class CashRegisterEntity : BaseEntity
 
     public bool IsActive { get; set; } = true;
 
+    public IReadOnlyCollection<ShiftEntity> Shifts { get; private set; } = new List<ShiftEntity>();
+
     public static class Constraints
     {
         public const int NameMaxLength = 50;

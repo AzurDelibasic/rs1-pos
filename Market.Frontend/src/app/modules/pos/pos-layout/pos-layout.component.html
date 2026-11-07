@@ -66,6 +66,11 @@
         <mat-icon matListItemIcon>admin_panel_settings</mat-icon>
         <span matListItemTitle>{{ 'POS.MENU.ADMIN_PANEL' | translate }}</span>
       </a>
+      } @else if (auth.isManager()) {
+      <a mat-list-item routerLink="/admin/regions">
+        <mat-icon matListItemIcon>manage_accounts</mat-icon>
+        <span matListItemTitle>{{ 'POS.MENU.MANAGEMENT' | translate }}</span>
+      </a>
       }
 
       <a mat-list-item routerLink="/pos/profile" routerLinkActive="active">
