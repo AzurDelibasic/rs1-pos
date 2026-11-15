@@ -21,6 +21,7 @@ public partial class DatabaseContext : DbContext, IAppDbContext
     public DbSet<CashRegisterEntity> CashRegisters => Set<CashRegisterEntity>();
     public DbSet<ShiftEntity> Shifts => Set<ShiftEntity>();
     public DbSet<CountryEntity> Countries => Set<CountryEntity>();
+    public DbSet<AppSettingsEntity> AppSettings => Set<AppSettingsEntity>();
 
     private readonly TimeProvider _clock;
     public DatabaseContext(DbContextOptions<DatabaseContext> options, TimeProvider clock) : base(options)

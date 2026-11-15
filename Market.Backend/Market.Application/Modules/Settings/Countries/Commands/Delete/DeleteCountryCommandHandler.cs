@@ -14,6 +14,13 @@ public sealed class DeleteCountryCommandHandler(IAppDbContext context, IAppCurre
         if (country is null)
             throw new MarketNotFoundException($"Država (ID={request.Id}) nije pronađena.");
 
+        var isSelectedInSettings = await context.AppSettings
+            .AnyAsync(s => s.CountryId == country.Id, cancellationToken);
+
+        if (isSelectedInSettings)
+            throw new MarketConflictException(
+                $"Država {country.Name} je izabrana u postavkama aplikacije i ne može se obrisati.");
+
         context.Countries.Remove(country);
         await context.SaveChangesAsync(cancellationToken);
 
