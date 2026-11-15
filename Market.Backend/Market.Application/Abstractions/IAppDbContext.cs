@@ -1,4 +1,5 @@
 ﻿using Market.Domain.Entities.Finance;
+using Market.Domain.Entities.Settings;
 using Market.Domain.Entities.Shifts;
 using Market.Domain.Entities.Venue;
 
@@ -21,6 +22,8 @@ public interface IAppDbContext
 
     DbSet<CashRegisterEntity> CashRegisters { get; }
     DbSet<ShiftEntity> Shifts { get; }
+
+    DbSet<CountryEntity> Countries { get; }
 
     Task<int> SaveChangesAsync(CancellationToken ct);
 }

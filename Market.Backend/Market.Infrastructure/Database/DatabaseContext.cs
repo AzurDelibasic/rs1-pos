@@ -1,5 +1,6 @@
 ﻿using Market.Application.Abstractions;
 using Market.Domain.Entities.Finance;
+using Market.Domain.Entities.Settings;
 using Market.Domain.Entities.Shifts;
 using Market.Domain.Entities.Venue;
 
@@ -19,6 +20,7 @@ public partial class DatabaseContext : DbContext, IAppDbContext
     public DbSet<TableEntity> Tables => Set<TableEntity>();
     public DbSet<CashRegisterEntity> CashRegisters => Set<CashRegisterEntity>();
     public DbSet<ShiftEntity> Shifts => Set<ShiftEntity>();
+    public DbSet<CountryEntity> Countries => Set<CountryEntity>();
 
     private readonly TimeProvider _clock;
     public DatabaseContext(DbContextOptions<DatabaseContext> options, TimeProvider clock) : base(options)

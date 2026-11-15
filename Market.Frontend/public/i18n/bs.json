@@ -96,6 +96,7 @@
       "MY_PROFILE": "Moj profil",
       "LOGOUT": "Odjava",
       "EXCHANGE_RATES": "Kursna lista",
+      "COUNTRIES": "Države i PDV",
       "VENUE": "OBJEKAT",
       "REGIONS": "Regije",
       "TABLES": "Stolovi",
@@ -377,6 +378,48 @@
       "ERROR_LOAD_LIST": "Greška pri učitavanju smjena.",
       "ERROR_LOAD_CASH_REGISTERS": "Greška pri učitavanju kasa.",
       "ERROR_LOAD_WAITERS": "Greška pri učitavanju konobara."
+    }
+  },
+  "COUNTRIES": {
+    "TITLE": "Države i PDV",
+    "SEARCH_PLACEHOLDER": "Pretraži države",
+    "SEARCH_INPUT_PLACEHOLDER": "Unesite naziv ili oznaku...",
+    "NEW_COUNTRY": "Nova država",
+    "LOADING": "Učitavanje država...",
+    "NO_DATA": "Nema država za prikaz",
+    "NO_DATA_FILTER": "Nema rezultata za pretragu",
+    "TABLE": {
+      "CODE": "Oznaka",
+      "NAME": "Naziv",
+      "VAT_RATE": "Stopa PDV-a",
+      "ACTIONS": "Akcije"
+    },
+    "ACTIONS": {
+      "EDIT_TOOLTIP": "Uredi državu",
+      "DELETE_TOOLTIP": "Obriši državu"
+    },
+    "FORM": {
+      "NAME": "Naziv države",
+      "NAME_PLACEHOLDER": "npr. Bosna i Hercegovina",
+      "CODE": "Oznaka",
+      "CODE_PLACEHOLDER": "npr. BA",
+      "CODE_HINT": "ISO oznaka od 2 slova",
+      "VAT_RATE": "Stopa PDV-a",
+      "LOADING": "Učitavanje...",
+      "CANCEL": "Otkaži",
+      "SAVE": "Sačuvaj",
+      "UPDATE": "Ažuriraj",
+      "CREATE_TITLE": "Nova država",
+      "EDIT_TITLE": "Uredi državu"
+    },
+    "DIALOGS": {
+      "DELETE_MESSAGE": "Da li ste sigurni da želite obrisati državu \"{{name}}\"?",
+      "SUCCESS_CREATE": "Država uspješno kreirana.",
+      "SUCCESS_UPDATE": "Država uspješno ažurirana.",
+      "SUCCESS_DELETE": "Država uspješno obrisana.",
+      "ERROR_DELETE": "Greška pri brisanju države.",
+      "ERROR_LOAD": "Greška pri učitavanju države.",
+      "ERROR_LOAD_LIST": "Greška pri učitavanju država."
     }
   },
   "POS": {

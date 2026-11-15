@@ -260,6 +260,36 @@ export class DialogHelperService {
     }
   };
 
+  country = {
+    confirmDelete: (countryName: string) => {
+      return this.confirmDelete(
+        countryName,
+        'COUNTRIES.DIALOGS.DELETE_MESSAGE'
+      );
+    },
+
+    showCreateSuccess: () => {
+      return this.showSuccess(
+        'DIALOGS.TITLES.SUCCESS',
+        'COUNTRIES.DIALOGS.SUCCESS_CREATE'
+      );
+    },
+
+    showUpdateSuccess: () => {
+      return this.showSuccess(
+        'DIALOGS.TITLES.SUCCESS',
+        'COUNTRIES.DIALOGS.SUCCESS_UPDATE'
+      );
+    },
+
+    showDeleteSuccess: () => {
+      return this.showSuccess(
+        'DIALOGS.TITLES.SUCCESS',
+        'COUNTRIES.DIALOGS.SUCCESS_DELETE'
+      );
+    }
+  };
+
   cashRegister = {
     confirmDelete: (cashRegisterName: string) => {
       return this.confirmDelete(
