@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Market.Domain.Entities.Catalog;
 using Market.Domain.Entities.Finance;
 using Market.Domain.Entities.Identity;
+using Market.Domain.Entities.Settings;
 using Market.Domain.Entities.Shifts;
 using Market.Domain.Entities.Venue;
 
@@ -28,6 +29,7 @@ public static class DynamicDataSeeder
         await SeedTablesAsync(context);
         await SeedCashRegistersAsync(context);
         await SeedShiftsAsync(context);
+        await SeedCountriesAsync(context);
     }
 
     private static async Task SeedProductCategoriesAsync(DatabaseContext context)
@@ -517,5 +519,21 @@ public static class DynamicDataSeeder
         await context.SaveChangesAsync();
 
         Console.WriteLine("Dynamic seed: shifts added.");
+    }
+
+    private static async Task SeedCountriesAsync(DatabaseContext context)
+    {
+        if (await context.Countries.AnyAsync())
+            return;
+
+        context.Countries.AddRange(
+            new CountryEntity { Name = "Bosna i Hercegovina", Code = "BA", VatRate = 17m },
+            new CountryEntity { Name = "Hrvatska", Code = "HR", VatRate = 25m },
+            new CountryEntity { Name = "Srbija", Code = "RS", VatRate = 20m },
+            new CountryEntity { Name = "Crna Gora", Code = "ME", VatRate = 21m });
+
+        await context.SaveChangesAsync();
+
+        Console.WriteLine("Dynamic seed: countries added.");
     }
 }

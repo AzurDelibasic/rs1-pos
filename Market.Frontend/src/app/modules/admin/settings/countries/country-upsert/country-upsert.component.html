@@ -1,0 +1,80 @@
+<h2 mat-dialog-title>
+  {{ (isEditMode ? 'COUNTRIES.FORM.EDIT_TITLE' : 'COUNTRIES.FORM.CREATE_TITLE') | translate }}
+</h2>
+
+<mat-dialog-content>
+  @if (form) {
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" id="country-form">
+      @if (errorMessage) {
+        <div class="error-banner">
+          <mat-icon>error</mat-icon>
+          <span>{{ errorMessage }}</span>
+        </div>
+      }
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>{{ 'COUNTRIES.FORM.NAME' | translate }}</mat-label>
+        <input
+          matInput
+          formControlName="name"
+          [placeholder]="'COUNTRIES.FORM.NAME_PLACEHOLDER' | translate"
+          [maxlength]="formService.nameMaxLength"
+          autocomplete="off"
+        />
+        <mat-icon matSuffix>label</mat-icon>
+        <mat-error><app-fit-field-error [control]="form.controls.name" /></mat-error>
+        <mat-hint align="end">{{ form.controls.name.value.length }}/{{ formService.nameMaxLength }}</mat-hint>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>{{ 'COUNTRIES.FORM.CODE' | translate }}</mat-label>
+        <input
+          matInput
+          formControlName="code"
+          [placeholder]="'COUNTRIES.FORM.CODE_PLACEHOLDER' | translate"
+          [maxlength]="formService.codeLength"
+          autocomplete="off"
+        />
+        <mat-icon matSuffix>flag</mat-icon>
+        <mat-error><app-fit-field-error [control]="form.controls.code" /></mat-error>
+        <mat-hint>{{ 'COUNTRIES.FORM.CODE_HINT' | translate }}</mat-hint>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>{{ 'COUNTRIES.FORM.VAT_RATE' | translate }}</mat-label>
+        <input matInput type="number" min="0" max="100" step="0.01" formControlName="vatRate" />
+        <span matTextSuffix>&nbsp;%</span>
+        <mat-error><app-fit-field-error [control]="form.controls.vatRate" /></mat-error>
+      </mat-form-field>
+    </form>
+  }
+
+  @if (isLoading && !form) {
+    <div class="loading-container">
+      <mat-spinner diameter="40"></mat-spinner>
+      <p>{{ 'COUNTRIES.FORM.LOADING' | translate }}</p>
+    </div>
+  }
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button type="button" (click)="onCancel()" [disabled]="isLoading">
+    <mat-icon>close</mat-icon>
+    {{ 'COUNTRIES.FORM.CANCEL' | translate }}
+  </button>
+
+  <button
+    mat-raised-button
+    color="primary"
+    type="submit"
+    form="country-form"
+    [disabled]="!form || form.invalid || isLoading"
+  >
+    @if (isLoading) {
+      <mat-spinner diameter="20"></mat-spinner>
+    } @else {
+      <mat-icon>{{ isEditMode ? 'edit' : 'save' }}</mat-icon>
+    }
+    {{ (isEditMode ? 'COUNTRIES.FORM.UPDATE' : 'COUNTRIES.FORM.SAVE') | translate }}
+  </button>
+</mat-dialog-actions>

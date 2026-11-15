@@ -21,6 +21,8 @@ import { TablesComponent } from './venue/tables/tables.component';
 import { CashRegisterUpsertComponent } from './shifts/cash-registers/cash-register-upsert/cash-register-upsert.component';
 import { CashRegistersComponent } from './shifts/cash-registers/cash-registers.component';
 import { ShiftsComponent } from './shifts/shifts/shifts.component';
+import { CountryUpsertComponent } from './settings/countries/country-upsert/country-upsert.component';
+import { CountriesComponent } from './settings/countries/countries.component';
 
 
 @NgModule({
@@ -41,6 +43,8 @@ import { ShiftsComponent } from './shifts/shifts/shifts.component';
     CashRegisterUpsertComponent,
     CashRegistersComponent,
     ShiftsComponent,
+    CountryUpsertComponent,
+    CountriesComponent,
   ],
   imports: [
     AdminRoutingModule,

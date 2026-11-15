@@ -14,6 +14,7 @@ import {TablesComponent} from './venue/tables/tables.component';
 import {myAuthData, myAuthGuard} from '../../core/guards/my-auth-guard';
 import {CashRegistersComponent} from './shifts/cash-registers/cash-registers.component';
 import {ShiftsComponent} from './shifts/shifts/shifts.component';
+import {CountriesComponent} from './settings/countries/countries.component';
 
 const routes: Routes = [
   {
@@ -71,6 +72,12 @@ const routes: Routes = [
         canActivate: [myAuthGuard],
         data: myAuthData({ requireAdmin: true }),
         component: ExchangeRatesComponent,
+      },
+      {
+        path: 'countries',
+        canActivate: [myAuthGuard],
+        data: myAuthData({ requireAdmin: true }),
+        component: CountriesComponent,
       },
 
       // POSTAVKE APLIKACIJE (prazna stranica – ovdje idu postavke vaše aplikacije)

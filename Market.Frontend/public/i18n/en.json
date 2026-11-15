@@ -96,6 +96,7 @@
       "MY_PROFILE": "My profile",
       "LOGOUT": "Logout",
       "EXCHANGE_RATES": "Exchange rates",
+      "COUNTRIES": "Countries and VAT",
       "VENUE": "VENUE",
       "REGIONS": "Regions",
       "TABLES": "Tables",
@@ -377,6 +378,48 @@
       "ERROR_LOAD_LIST": "Error loading shifts.",
       "ERROR_LOAD_CASH_REGISTERS": "Error loading cash registers.",
       "ERROR_LOAD_WAITERS": "Error loading waiters."
+    }
+  },
+  "COUNTRIES": {
+    "TITLE": "Countries and VAT",
+    "SEARCH_PLACEHOLDER": "Search countries",
+    "SEARCH_INPUT_PLACEHOLDER": "Enter name or code...",
+    "NEW_COUNTRY": "New country",
+    "LOADING": "Loading countries...",
+    "NO_DATA": "No countries to display",
+    "NO_DATA_FILTER": "No results found for search",
+    "TABLE": {
+      "CODE": "Code",
+      "NAME": "Name",
+      "VAT_RATE": "VAT rate",
+      "ACTIONS": "Actions"
+    },
+    "ACTIONS": {
+      "EDIT_TOOLTIP": "Edit country",
+      "DELETE_TOOLTIP": "Delete country"
+    },
+    "FORM": {
+      "NAME": "Country name",
+      "NAME_PLACEHOLDER": "e.g. Bosnia and Herzegovina",
+      "CODE": "Code",
+      "CODE_PLACEHOLDER": "e.g. BA",
+      "CODE_HINT": "2-letter ISO code",
+      "VAT_RATE": "VAT rate",
+      "LOADING": "Loading...",
+      "CANCEL": "Cancel",
+      "SAVE": "Save",
+      "UPDATE": "Update",
+      "CREATE_TITLE": "New country",
+      "EDIT_TITLE": "Edit country"
+    },
+    "DIALOGS": {
+      "DELETE_MESSAGE": "Are you sure you want to delete country \"{{name}}\"?",
+      "SUCCESS_CREATE": "Country created successfully.",
+      "SUCCESS_UPDATE": "Country updated successfully.",
+      "SUCCESS_DELETE": "Country deleted successfully.",
+      "ERROR_DELETE": "Error deleting country.",
+      "ERROR_LOAD": "Error loading the country.",
+      "ERROR_LOAD_LIST": "Error loading countries."
     }
   },
   "POS": {
