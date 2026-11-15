@@ -3,10 +3,116 @@
     <mat-card-header>
       <mat-icon mat-card-avatar class="avatar-icon">settings</mat-icon>
       <mat-card-title>{{ 'ADMIN_SETTINGS.TITLE' | translate }}</mat-card-title>
+      <mat-card-subtitle>{{ 'ADMIN_SETTINGS.SUBTITLE' | translate }}</mat-card-subtitle>
     </mat-card-header>
 
     <mat-card-content>
-      <p>{{ 'ADMIN_SETTINGS.EMPTY' | translate }}</p>
+      @if (isLoading) {
+        <div class="loading-container">
+          <mat-spinner diameter="40"></mat-spinner>
+          <p>{{ 'ADMIN_SETTINGS.LOADING' | translate }}</p>
+        </div>
+      }
+
+      @if (!isLoading && errorMessage) {
+        <div class="error-banner">
+          <mat-icon>error</mat-icon>
+          <span>{{ errorMessage }}</span>
+        </div>
+      }
+
+      @if (form && !isLoading) {
+        <form [formGroup]="form" (ngSubmit)="onSubmit()" class="settings-form">
+          @if (saveError) {
+            <div class="error-banner">
+              <mat-icon>error</mat-icon>
+              <span>{{ saveError }}</span>
+            </div>
+          }
+
+          <h3 class="section-title">{{ 'ADMIN_SETTINGS.SECTIONS.BUSINESS' | translate }}</h3>
+
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>{{ 'ADMIN_SETTINGS.BUSINESS_NAME' | translate }}</mat-label>
+            <input matInput formControlName="businessName" [maxlength]="formService.businessNameMaxLength" autocomplete="off" />
+            <mat-icon matSuffix>storefront</mat-icon>
+            <mat-error><app-fit-field-error [control]="form.controls.businessName" /></mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>{{ 'ADMIN_SETTINGS.ADDRESS' | translate }}</mat-label>
+            <input matInput formControlName="address" [maxlength]="formService.addressMaxLength" autocomplete="off" />
+            <mat-icon matSuffix>place</mat-icon>
+            <mat-error><app-fit-field-error [control]="form.controls.address" /></mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>{{ 'ADMIN_SETTINGS.TAX_NUMBER' | translate }}</mat-label>
+            <input matInput formControlName="taxNumber" [maxlength]="formService.taxNumberMaxLength" autocomplete="off" />
+            <mat-icon matSuffix>badge</mat-icon>
+            <mat-error><app-fit-field-error [control]="form.controls.taxNumber" /></mat-error>
+          </mat-form-field>
+
+          <h3 class="section-title">{{ 'ADMIN_SETTINGS.SECTIONS.FINANCE' | translate }}</h3>
+
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>{{ 'ADMIN_SETTINGS.COUNTRY' | translate }}</mat-label>
+            <mat-select formControlName="countryId">
+              @for (country of countries; track country.id) {
+                <mat-option [value]="country.id">{{ country.name }} ({{ country.vatRate | number: '1.0-2' }} %)</mat-option>
+              }
+            </mat-select>
+            <mat-icon matSuffix>public</mat-icon>
+            <mat-error><app-fit-field-error [control]="form.controls.countryId" /></mat-error>
+            @if (selectedVatRate !== null) {
+              <mat-hint>{{ 'ADMIN_SETTINGS.VAT_HINT' | translate: { rate: (selectedVatRate | number: '1.0-2') } }}</mat-hint>
+            }
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>{{ 'ADMIN_SETTINGS.DEFAULT_CURRENCY' | translate }}</mat-label>
+            <mat-select formControlName="defaultCurrencyCode">
+              @for (currency of currencies; track currency.code) {
+                <mat-option [value]="currency.code">{{ currency.name }} ({{ currency.symbol }})</mat-option>
+              }
+            </mat-select>
+            <mat-icon matSuffix>payments</mat-icon>
+            <mat-error><app-fit-field-error [control]="form.controls.defaultCurrencyCode" /></mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>{{ 'ADMIN_SETTINGS.ROUNDING_MODE' | translate }}</mat-label>
+            <mat-select formControlName="roundingMode">
+              @for (mode of roundingModes; track mode.value) {
+                <mat-option [value]="mode.value">{{ mode.key | translate }}</mat-option>
+              }
+            </mat-select>
+            <mat-icon matSuffix>calculate</mat-icon>
+            <mat-error><app-fit-field-error [control]="form.controls.roundingMode" /></mat-error>
+          </mat-form-field>
+
+          <h3 class="section-title">{{ 'ADMIN_SETTINGS.SECTIONS.RESERVATIONS' | translate }}</h3>
+
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>{{ 'ADMIN_SETTINGS.RESERVATION_HOLD_MINUTES' | translate }}</mat-label>
+            <input matInput type="number" min="0" [max]="formService.reservationHoldMinutesMax" formControlName="reservationHoldMinutes" />
+            <span matTextSuffix>&nbsp;min</span>
+            <mat-error><app-fit-field-error [control]="form.controls.reservationHoldMinutes" /></mat-error>
+            <mat-hint>{{ 'ADMIN_SETTINGS.RESERVATION_HOLD_HINT' | translate }}</mat-hint>
+          </mat-form-field>
+
+          <div class="form-actions">
+            <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid || form.pristine || isSaving">
+              @if (isSaving) {
+                <mat-spinner diameter="20"></mat-spinner>
+              } @else {
+                <mat-icon>save</mat-icon>
+              }
+              {{ 'ADMIN_SETTINGS.SAVE' | translate }}
+            </button>
+          </div>
+        </form>
+      }
     </mat-card-content>
   </mat-card>
 </div>

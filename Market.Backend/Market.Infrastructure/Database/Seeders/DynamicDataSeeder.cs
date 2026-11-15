@@ -30,6 +30,7 @@ public static class DynamicDataSeeder
         await SeedCashRegistersAsync(context);
         await SeedShiftsAsync(context);
         await SeedCountriesAsync(context);
+        await SeedAppSettingsAsync(context);
     }
 
     private static async Task SeedProductCategoriesAsync(DatabaseContext context)
@@ -535,5 +536,32 @@ public static class DynamicDataSeeder
         await context.SaveChangesAsync();
 
         Console.WriteLine("Dynamic seed: countries added.");
+    }
+
+    private static async Task SeedAppSettingsAsync(DatabaseContext context)
+    {
+        if (await context.AppSettings.AnyAsync())
+            return;
+
+        var country = await context.Countries.FirstOrDefaultAsync(c => c.Code == "BA");
+        var currency = await context.Currencies.FirstOrDefaultAsync(c => c.IsBase);
+
+        if (country is null || currency is null)
+            return;
+
+        context.AppSettings.Add(new AppSettingsEntity
+        {
+            BusinessName = "Kafić RS1",
+            Address = "Maršala Tita 1, Sarajevo",
+            TaxNumber = "4200000000000",
+            CountryId = country.Id,
+            DefaultCurrencyId = currency.Id,
+            RoundingMode = RoundingModeType.NearestFiveCents,
+            ReservationHoldMinutes = 15
+        });
+
+        await context.SaveChangesAsync();
+
+        Console.WriteLine("Dynamic seed: app settings added.");
     }
 }

@@ -107,7 +107,31 @@
   },
   "ADMIN_SETTINGS": {
     "TITLE": "Settings",
-    "EMPTY": "Application settings go here (e.g. company details, default currency, business rules). Personal data and password are on the “My profile” page."
+    "SUBTITLE": "Business details and rules",
+    "LOADING": "Loading settings...",
+    "ERROR_LOAD": "Error loading settings.",
+    "SUCCESS_SAVE": "Settings saved.",
+    "SAVE": "Save",
+    "SECTIONS": {
+      "BUSINESS": "Business details",
+      "FINANCE": "VAT, currency and rounding",
+      "RESERVATIONS": "Reservations"
+    },
+    "BUSINESS_NAME": "Business name",
+    "ADDRESS": "Address",
+    "TAX_NUMBER": "Tax number",
+    "COUNTRY": "Country",
+    "VAT_HINT": "VAT rate: {{rate}} %",
+    "DEFAULT_CURRENCY": "Default currency",
+    "ROUNDING_MODE": "Amount rounding",
+    "ROUNDING": {
+      "NONE": "No rounding",
+      "FIVE_CENTS": "To 0.05",
+      "TEN_CENTS": "To 0.10",
+      "WHOLE": "To whole amount"
+    },
+    "RESERVATION_HOLD_MINUTES": "Reservation hold time",
+    "RESERVATION_HOLD_HINT": "How many minutes a table is held after the reservation time"
   },
   "PRODUCT_CATEGORIES": {
     "TITLE": "Product Categories",

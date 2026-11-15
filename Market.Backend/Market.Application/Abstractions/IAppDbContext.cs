@@ -24,6 +24,7 @@ public interface IAppDbContext
     DbSet<ShiftEntity> Shifts { get; }
 
     DbSet<CountryEntity> Countries { get; }
+    DbSet<AppSettingsEntity> AppSettings { get; }
 
     Task<int> SaveChangesAsync(CancellationToken ct);
 }

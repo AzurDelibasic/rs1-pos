@@ -107,7 +107,31 @@
   },
   "ADMIN_SETTINGS": {
     "TITLE": "Postavke",
-    "EMPTY": "Ovdje dolaze postavke aplikacije (npr. podaci o firmi, podrazumijevana valuta, pravila poslovanja). Lični podaci i lozinka su na stranici „Moj profil”."
+    "SUBTITLE": "Podaci o objektu i pravila poslovanja",
+    "LOADING": "Učitavanje postavki...",
+    "ERROR_LOAD": "Greška pri učitavanju postavki.",
+    "SUCCESS_SAVE": "Postavke su sačuvane.",
+    "SAVE": "Sačuvaj",
+    "SECTIONS": {
+      "BUSINESS": "Podaci o objektu",
+      "FINANCE": "PDV, valuta i zaokruživanje",
+      "RESERVATIONS": "Rezervacije"
+    },
+    "BUSINESS_NAME": "Naziv objekta",
+    "ADDRESS": "Adresa",
+    "TAX_NUMBER": "PIB/JIB",
+    "COUNTRY": "Država",
+    "VAT_HINT": "Stopa PDV-a: {{rate}} %",
+    "DEFAULT_CURRENCY": "Zadana valuta",
+    "ROUNDING_MODE": "Zaokruživanje iznosa",
+    "ROUNDING": {
+      "NONE": "Bez zaokruživanja",
+      "FIVE_CENTS": "Na 0,05",
+      "TEN_CENTS": "Na 0,10",
+      "WHOLE": "Na cijeli iznos"
+    },
+    "RESERVATION_HOLD_MINUTES": "Vrijeme čekanja rezervacije",
+    "RESERVATION_HOLD_HINT": "Koliko minuta se sto drži nakon termina rezervacije"
   },
   "PRODUCT_CATEGORIES": {
     "TITLE": "Kategorije Proizvoda",
